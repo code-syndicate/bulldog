@@ -1,0 +1,42 @@
+{% extends 'services/base.html' %}
+
+
+{% block main %}
+
+
+<!-- The Email Confirmation  form  -->
+<div id='form3'
+     class='max-w-md  mx-auto md:ring-1 md:ring-gray-700 md:bg-gray-700 p-2 px-10 rounded-xl mt-12'>
+    <form class=''
+          method='post'
+          action='{% url "services:verify_view" %}'>
+
+        {% csrf_token %}
+
+        <legend style='font-family:"Work Sans";'
+                class='text-left text-2xl md:text-white my-5 block text-gray-700 font-bold mb-12  select-none'>
+            Please enter the code we sent to your inbox to verify your email address</legend>
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Verification Code
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   minlength="4"
+                   class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-center'
+                   name='code'
+                   type='text' />
+        </div>
+
+
+        <button class='block  mx-auto w-full  hover:bg-green-700 mt-16  my-2 bg-green-700 rounded-lg ring-2 ring-green-900 text-2xl text-white  text-center py-3 px-5 outline-none'
+                type='submit'>
+            Continue </button>
+    </form>
+</div>
+
+
+
+{% endblock %}

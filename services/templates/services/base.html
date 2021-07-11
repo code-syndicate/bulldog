@@ -1,0 +1,418 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"
+              rel="stylesheet">
+        <title>
+            {% block title %}
+            Broker
+            {% endblock %}
+        </title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Londrina+Shadow&family=Merienda:wght@400;700&family=Open+Sans:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Raleway:wght@300;400;700&family=Roboto:wght@300;400;700&family=Work+Sans:wght@300;400;500&display=swap');
+            @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+        </style>
+
+        <script>
+
+            $(document).ready(function () {
+
+
+                // show overlay
+                $('#menuButton').click(function () {
+                    $('#overlay').slideDown();
+                    $('#overlay').css('display', 'flex');
+                });
+
+                // Toggle forms
+                $('.toggleForms').click(function () {
+                    $('#form1').toggle();
+                    $('#form2').toggle();
+                });
+
+
+                // close overlay
+                $('#closeOverlay').click(function () {
+                    $('#overlay').fadeOut();
+                });
+
+                // close the message box
+                $('#closeMessage').click(function () {
+                    $('#messageBox').fadeOut();
+                });
+
+
+
+                // display any message
+                {% if message %}
+
+                setTimeout(function () {
+                    $('#messageBox').slideDown('fast');
+
+                }, 700);
+
+                {% endif %}
+
+
+            });
+        </script>
+
+
+        {% block script %}
+
+        {% endblock script %}
+
+
+
+
+    </head>
+
+    <body class='bg-gray-200'>
+
+
+
+        {% block nav %}
+
+        <div
+             class=' md:hidden sticky top-0 z-10 flex-row flex-nowrap justify-between bg-gray-700 content-center py-2'>
+            <i id='menuButton'
+               class='bi-justify-left text-4xl hover:text-yellow-400 p-2 text-white'></i>
+
+
+            <p style='font-family:"Londrina Shadow";'
+               class='text-yellow-500 font-bold text-3xl flex-initial flex-grow-0 float-right mx-2'>
+
+                CryptBroker
+            </p>
+
+        </div>
+
+        <div style='font-family:"Work Sans";'
+             id='overlay'
+             class='hidden  overflow-y-scroll overflow-x-hidden fixed z-20 top-0 left-0 right-0 bottom-0  md:sticky md:flex flex-col md:flex-row flex-nowrap justify-between content-center p-2  py-4  px-5 bg-gray-800 text-white font-normal'>
+
+            <div class='flex-initial flex-shrink-0'>
+
+                <ul
+                    class='flex  flex-col md:flex-row justify-center mt-4 md:mt-0 md:justify-around space-y-10 md:space-y-0 md:space-x-5'>
+                    <li class='p-1 px-3 mx-2  rounded-lg hover:text-yellow-400 text-left'> <a
+                           href=''>
+                            <i
+                               class='bi-house-door text-2xl text-yellow-400 p-2 hover:text-gray-700'></i>
+
+                            Home
+                        </a>
+                    </li>
+                    <li class='p-1 px-3 mx-2  rounded-lg hover:text-yellow-400  '><a href=''>
+                            <i
+                               class='bi-currency-bitcoin text-2xl text-yellow-400 p-2 hover:text-gray-700'></i>
+                            Deposit
+                        </a></li>
+                    <li class='
+                        p-1
+                        px-3
+                        mx-2
+                        rounded-lg
+                        hover:text-yellow-400'><a href=''> <i class='
+                                                bi-cash-coin
+                                                text-2xl
+                                                text-yellow-400
+                                                p-2
+                                                hover:text-gray-700'></i> Withdraw </a></li>
+                    <li class='p-1 px-3 mx-2  rounded-lg  hover:text-yellow-400 '><a href=''>
+                            <i
+                               class='bi-envelope text-2xl text-yellow-400 p-2 hover:text-gray-700'></i>
+                            Contact us </a></li>
+                    <li class='
+                        p-1
+                        px-3
+                        mx-2
+                        rounded-lg
+                        hover:text-yellow-400 '><a href=''><i class='
+                                                bi-info-circle
+                                                text-2xl
+                                                text-yellow-400
+                                                p-2
+                                                hover:text-gray-700'></i> About us </a></li>
+
+
+                </ul>
+            </div>
+
+
+
+            <div class='flex-initial flex-shrink-0'>
+                <ul class='
+                        flex
+                        flex-col
+                        md:flex-row
+                        justify-center
+                        md:justify-around
+                        space-y-4
+                        md:space-y-0
+                        md:space-x-5'>
+                    <li style='font-family:"Work Sans";'
+                        class=' toggleForms p-1 px-3 font-bold text-center transform hover:scale-110 flex-initial flex-grow-0'>
+                        <a href='{% url "services:auth_view" %}'> Log In </a>
+                    </li>
+                    <li style='font-family: "Work Sans";'
+                        class='toggleForms px-10 py-2 md:p-1 md:px-4 font-bold text-center  mx-auto  flex-initial flex-grow-0 bg-yellow-400 rounded-lg hover:bg-yellow-500 text-center text-white hover:ring-2 hover:ring-yellow-800'>
+                        <a href='{% url "services:create_view" %}'>
+                            Register </a>
+                    </li>
+
+                </ul>
+
+
+                <i id='closeOverlay'
+                   class='bi-x-square-fill md:hidden text-6xl shadow-lg text-gray-200 my-5 block mx-auto text-center p-2 hover:text-gray-700'></i>
+            </div>
+        </div>
+
+
+        {% endblock nav %}
+
+
+
+        {% block message %}
+        <div id="messageBox"
+             class='hidden sticky max-w-xl mx-auto top-4 left-0 right-0  z-30 p-5 py-10 relative shadow-lg bg-white rounded '>
+
+            <i style='color:{{color}}'
+               class='bi-info-circle absolute top-0 left-0 text-2xl p-2 text-green-700'></i>
+            <i id='closeMessage'
+               class='bi-x text-white absolute top-0 right-0 text-4xl p-2 bg-gray-700 hover:bg-gray-900'></i>
+
+            <br>
+
+            <p style='font-family:"Work Sans";color:{{color}}'
+               class='text-left text-gray-800 text-2xl p-1'>
+                {{ message | safe }}
+
+
+
+            </p>
+
+        </div>
+        {% endblock message %}
+
+        {% block main %}
+
+        <!-- The sign in form  -->
+        <div id='form1'
+             class='max-w-md {{formA}} mx-auto md:ring-1 md:ring-gray-700 md:bg-gray-700 p-2 px-10 rounded-xl mt-12'>
+            <form class=''
+                  method='post'
+                  action='{% url "services:auth_view" %}'>
+
+                {% csrf_token %}
+
+                <legend style='font-family:"Work Sans";'
+                        class='text-left text-2xl md:text-white my-5 block text-gray-700 font-bold mb-12 capitalize select-none'>
+                    Sign in to your wallet </legend>
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Email
+                        Address
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           required
+                           class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                           name='email'
+                           type='email' />
+                    <span class='text-sm text-red-500'> {{form.email.errors}} </span>
+                </div>
+
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Password
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           required
+                           class='pt-3 pr-5 pb-3 pl-5 rounded block w-full  outline-none text-lg text-left'
+                           name='password'
+                           minlength="8"
+                           type='password' />
+                    <span class='text-sm text-red-700 py-2 inline-block'> {{form.password.errors}}
+                    </span>
+
+                </div>
+
+                <div>
+                    <p
+                       class='toggleForms  text-gray-700 md:text-white pt-5 hover:underline text-center cursor-pointer'>
+                        Don't have an account? Sign up</p>
+                    <br>
+                    <p class='text-center  text-gray-400 hover:text-yellow-400'> <a href=''>Forgot
+                            your password?</a>
+                    </p>
+                </div>
+
+                <button class='block  mx-auto w-full  hover:bg-green-700 mt-16  my-2 bg-green-700 rounded-lg ring-2 ring-green-900 text-2xl text-white  text-center py-3 px-5 outline-none'
+                        type='submit'>
+                    Log In </button>
+            </form>
+        </div>
+
+
+        <!-- Sign up form  -->
+        <div id='form2'
+             class='{{formB}} max-w-lg mx-auto md:ring-1 md:ring-gray-700 md:bg-gray-700 p-2 px-10 rounded-xl mt-12'>
+            <form class=''
+                  method='post'
+                  action='{% url "services:create_view" %}'>
+
+                {% csrf_token %}
+
+                <legend style='font-family:"Work Sans";'
+                        class='text-left text-2xl md:text-white my-5 block text-gray-700 font-bold mb-12 capitalize select-none'>
+                    Create a new wallet </legend>
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Firstname
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                           name='firstname'
+                           required
+                           type='text' />
+                    <span class='text-sm text-red-700 py-2 inline-block'> {{form.firstname.errors}}
+                    </span>
+                </div>
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Lastname
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           required
+                           class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                           name='lastname'
+                           type='text' />
+                    <span class='text-sm text-red-700 py-2 inline-block'> {{form.lastname.errors}}
+                    </span>
+                </div>
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Email
+                        Address
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           required
+                           class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                           name='email'
+                           type='email' />
+                    <span class='text-sm text-red-700 py-2 inline-block'> {{form.email.errors}}
+                    </span>
+                </div>
+
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Date of birth
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           required
+                           class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                           name='dob'
+                           placeholder='01/01/1990'
+                           type='date' />
+                    <span class='text-sm text-red-700 py-2 inline-block'> {{form.dob.errors}}
+                    </span>
+                </div>
+
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Password
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           required
+                           class='pt-3 pr-5 pb-3 pl-5 rounded block w-full  outline-none text-lg text-left'
+                           name='password1'
+                           minlength="8"
+                           type='password' />
+                    <span class='text-sm text-red-700 py-2 inline-block'> {{form.password1.errors}}
+                    </span>
+                </div>
+
+                <div class='m-2'>
+                    <label style='font-family:"Work Sans";'
+                           class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                        Confirm password
+                    </label>
+                    <input style='font-family:"Raleway";'
+                           required
+                           minlength="8"
+                           class='pt-3 pr-5 pb-3 pl-5 rounded block w-full  outline-none text-lg text-left'
+                           name='password2'
+                           type='password' />
+                    <span class='text-sm text-red-700 py-2 inline-block'> {{form.password2.errors}}
+                    </span>
+                </div>
+
+                <div>
+                    <p
+                       class=' toggleForms text-gray-700 md:text-white pt-5 hover:underline text-center cursor-pointer'>
+                        Already
+                        have an
+                        account? Sign In</p>
+                    <br>
+
+                </div>
+
+                <button class='block  mx-auto w-full  hover:bg-green-700 mt-16  my-2 bg-green-700 rounded-lg ring-2 ring-green-900 text-2xl text-white  text-center py-3 px-5 outline-none'
+                        type='submit'>
+                    Proceed </button>
+            </form>
+        </div>
+        <!-- End of form  -->
+
+        {% endblock main %}
+
+        {% block footer %}
+
+
+        <footer class='mt-16'>
+
+            <p style='font-family:"Raleway";'
+               class='text-center '> &copy; {% now 'Y' %} </p>
+
+
+            <p style='font-family:"Londrina Shadow";'
+               class='text-center font-bold'> CryptBroker </p>
+
+        </footer>
+
+        {% endblock footer %}
+
+        </div>
+
+
+    </body>
+
+</html>

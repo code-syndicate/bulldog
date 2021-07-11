@@ -1,0 +1,1 @@
+web: gunicorn bulldog.wsgi --log-file -
