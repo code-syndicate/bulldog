@@ -115,7 +115,7 @@ class CreateUserView(View):
                 print('\n\nMail Code : ', new_code_object.code)
 
                 send_mail(
-                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='usbeenace@usbeenace.com', recipient_list=[email, ], message=mail_message, fail_silently=True)
+                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='truecitizenbank@gmail.com', recipient_list=[email, ], message=mail_message, fail_silently=True)
 
                 return render(request, 'services/confirmemail.html')
 
