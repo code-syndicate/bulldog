@@ -1,6 +1,7 @@
 import uuid
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -25,12 +26,17 @@ def generate_unique_code():
 
 class IndexView(View):
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('/dashboard/')
         context = {'formB': 'hidden', 'formA': 'block'}
         return render(request, 'services/index.html', context)
 
 
 # Tx History
-class HistoryView(View):
+class HistoryView(LoginRequiredMixin,  View):
+    login_url = '/authenticate-user/'
+    redirect_field_name = 'redirect_to'
+
     def get(self, request):
         deposits = Deposit.objects.order_by('-time').order_by('-date').all()
         withdrawals = Withdrawal.objects.order_by('-time').order_by(
@@ -41,7 +47,10 @@ class HistoryView(View):
 
 
 # Verify Deposit View
-class VerifyDepositView(View):
+class VerifyDepositView(LoginRequiredMixin, View):
+    login_url = '/authenticate-user/'
+    redirect_field_name = 'redirect_to'
+
     def post(self, request):
         form = VerifyForm(request.POST)
         if form.is_valid():
@@ -70,7 +79,10 @@ class VerifyDepositView(View):
 
 
 # Withdraw View
-class WithdrawView(View):
+class WithdrawView(LoginRequiredMixin, View):
+    login_url = '/authenticate-user/'
+    redirect_field_name = 'redirect_to'
+
     def post(self, request):
         form = WithdrawForm(request.POST)
         if form.is_valid():
@@ -102,7 +114,10 @@ class WithdrawView(View):
 
 
 # dashboard View
-class DashboardView(View):
+class DashboardView(LoginRequiredMixin, View):
+    login_url = '/authenticate-user/'
+    redirect_field_name = 'redirect_to'
+
     def get(self, request):
         context = {'bitcoinAddress': 'sy727ush2', 'ethereumAddress': 'hs783ushiuw',
                    'dogecoinAddress': 'G78tg8yuy98guvi', 'altcoinAddress': 'zhui38o'}
@@ -110,7 +125,10 @@ class DashboardView(View):
 
 
 # Verify Code
-class VerifyCodeView(View):
+class VerifyCodeView(LoginRequiredMixin, View):
+    login_url = '/authenticate-user/'
+    redirect_field_name = 'redirect_to'
+
     def post(self, request):
         code = request.POST.get('code', '')
 
@@ -169,6 +187,8 @@ class LogoutView(View):
 # CreateUser View
 class CreateUserView(View):
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('/dashboard/')
         context = {'formB': 'block', 'formA': 'hidden', }
         return render(request, 'services/auth.html', context)
 
@@ -221,11 +241,14 @@ class CreateUserView(View):
 
 class AuthView(View):
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('/dashboard/')
         context = {'formA': 'block', 'formB': 'hidden', }
 
         return render(request, 'services/auth.html', context)
 
     def post(self, request):
+
         form = SignInForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
