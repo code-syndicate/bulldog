@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Deposit, UserWallet, Withdrawal
+
+admin.site.register(UserWallet)
+admin.site.register(Deposit)
+admin.site.register(Withdrawal)

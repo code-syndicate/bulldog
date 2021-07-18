@@ -11,6 +11,111 @@ Dashboard | Usbeenance
     $(document).ready(function () {
 
 
+        function showMainOverlay() {
+            $('#mainOverlay').fadeIn();
+        }
+
+        function hideMainOverlay() {
+            $('#mainOverlay').hide();
+        }
+
+        function closeAllBoxes() {
+            // // close all boxes
+            let boxes = $(".coinBox");
+            for (let box of boxes) {
+                $(box).hide();
+            }
+            hideMainOverlay();
+            // end of close boxes
+
+        }
+
+
+
+        let togglers = $(".coinBox > .bi-x");
+        for (let toggler of togglers) {
+            $(toggler).click(function () {
+                closeAllBoxes();
+            });
+        }
+        // end of bi-x
+
+
+        $("#reportAbuse").click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+            $('#reportAbuseBox').fadeIn();
+        })
+
+        $("#showWithdrawForm").click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+            $('#withdrawForm').fadeIn();
+        })
+        $("#closeOverlayByWithdraw").click(function () {
+            hideMainOverlay();
+            $('#withdrawForm').fadeOut();
+        })
+
+
+        $("#showVerifyForm").click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+            $('#verifyForm').fadeIn();
+        })
+
+        $("#closeOverlayByVerify").click(function () {
+            hideMainOverlay();
+            $('#verifyForm').fadeOut();
+        })
+
+        // Coin Boxes Display handler
+        $('#showBitcoin').click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+
+
+
+            $("#fundWithBitcoin").fadeIn();
+
+        });
+        $('#depositClick').click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+
+
+            $("#fundWithBitcoin").fadeIn();
+
+        });
+
+        $('#showEthereum').click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+
+
+            $("#fundWithEthereum").fadeIn();
+
+        });
+        $('#showDogecoin').click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+
+
+            $("#fundWithDogecoin").fadeIn();
+
+
+        });
+        $('#showAltcoin').click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+
+
+            $("#fundWithAltcoin").fadeIn();
+
+
+        });
+
+
 
         $('#showOverlay').click(function () {
 
@@ -36,6 +141,393 @@ Dashboard | Usbeenance
 
 {% block main %}
 
+<!-- Report Abuse  -->
+<div id='reportAbuseBox'
+     class=" coinBox  hidden bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
+
+    <i onclick="this.parentElement.style.display = 'none'"
+       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+    <h4 style='font-family: "Work Sans";'
+        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Report an issue </h4>
+    <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
+         alt='bitcoin'
+         src='{% static "services/bitcoin2.jpg" %}'
+         width="300"
+         height="300">
+
+    <p style="font-family: Inter"
+       class='text-center p-2 text-lg font-bold '> Hey
+        {{request.user.firstname}}, please log all your complains to <a
+           href='mailto:support@usebeenance.com'
+           class='underline text-yellow-600'> support@usebeenance.com</a>. We
+        will
+        get back to you in due course.
+    </p>
+
+
+</div>
+
+
+<!-- Main Overlay -->
+<div id='mainOverlay'
+     class='fixed hidden top-0 left-0 z-20 right-0 bottom-0 bg-gray-700 opacity-70'></div>
+
+<!-- Verify Transfer  -->
+<div id='verifyForm'
+     class='overflow-y-scroll coinBox  max-w-md bg-gray-200 hidden  fixed left-0 right-0 top-0 bottom-0 z-30 mx-auto md:ring-1 md:ring-gray-700 md:bg-gray-700 p-2 px-10 rounded-xl md:mt-1'>
+    <i id='closeOverlayByVerify'
+       onclick="this.parentElement.style.display = 'none'"
+       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+    <form class=''
+          method='post'
+          action='{%   url "services:verify_deposit_view" %}'>
+
+        {% csrf_token %}
+
+        <legend style='font-family:"Work Sans";'
+                class='md:text-left text-center text-2xl md:text-white my-5 block text-gray-700 font-bold mb-12 capitalize select-none'>
+            <i class='bi-check2-circle'></i>
+            Verify your asset deposit
+        </legend>
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Asset
+            </label>
+            <select style='font-family:"Raleway";'
+                    required
+                    class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                    name='asset'>
+                <option value="Bitcoin"> Bitcoin</option>
+                <option value="Ethereum"> Ethereum</option>
+                <option value="Dogecoin"> Dogecoin</option>
+                <option value="Altcoin"> Altcoin</option>
+            </select>
+            <span class='text-sm text-red-500'> {{form.coin.errors}} </span>
+        </div>
+
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Address
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                   name='address'
+                   minlength="24"
+                   maxlength="48"
+                   type='text' />
+            <span class='text-sm text-red-500'> {{form.address.errors}} </span>
+        </div>
+
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Date
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                   name='date'
+                   type='date' />
+            <span class='text-sm text-red-500'> {{form.date.errors}} </span>
+        </div>
+
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Time
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                   name='time'
+                   type='time' />
+            <span class='text-sm text-red-500'> {{form.time.errors}} </span>
+        </div>
+
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Amount
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded block w-full  outline-none text-lg text-left'
+                   name='amount'
+                   type='decimal' />
+            <span class='text-sm text-red-700 py-2 inline-block'> {{form.amount.errors}}
+            </span>
+
+        </div>
+
+        <div>
+            <p style="font-family:Raleway"
+               class='toggleForms  text-gray-700 md:text-white pt-5 text-base text-center '>
+                Your account will be credited accordingly immediately your claim is confirmed
+            </p>
+            <br>
+
+        </div>
+
+        <button class='block  mx-auto w-full  hover:bg-green-700 mt-4  my-2 bg-green-700 rounded-lg ring-2 ring-green-900 text-2xl text-white  text-center py-3 px-5 outline-none'
+                type='submit'>
+            Verify </button>
+    </form>
+</div>
+
+
+
+
+<!-- Withdraw Form  -->
+<div id='withdrawForm'
+     class='overflow-y-scroll coinBox  max-w-md bg-gray-200 hidden  fixed left-0 right-0 top-0 bottom-0 z-30 mx-auto md:ring-1 md:ring-gray-700 md:bg-gray-700 p-2 px-10 rounded-xl md:mt-1'>
+    <i id='closeOverlayByWithdraw'
+       onclick="this.parentElement.style.display = 'none'"
+       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+    <form class=''
+          method='post'
+          action='{%   url "services:withdraw_view" %}'>
+
+        {% csrf_token %}
+
+        <legend style='font-family:"Work Sans";'
+                class='md:text-left text-center text-2xl md:text-white my-5 block text-gray-700 font-bold mb-12 capitalize select-none'>
+            <i class='bi-currency-dollar'></i>
+            Request for a withdrawal
+        </legend>
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Asset
+            </label>
+            <select style='font-family:"Raleway";'
+                    required
+                    class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                    name='asset'>
+                <option value="Bitcoin"> Bitcoin</option>
+                <option value="Ethereum"> Ethereum</option>
+                <option value="Dogecoin"> Dogecoin</option>
+                <option value="Altcoin"> Altcoin</option>
+            </select>
+            <span class='text-sm text-red-500'> {{form.coin.errors}} </span>
+        </div>
+
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Address
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                   name='address'
+                   minlength='24'
+                   maxlength="48"
+                   type='text' />
+            <span class='text-sm text-red-500'> {{form.address.errors}} </span>
+        </div>
+
+
+        <!-- <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Date
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                   name='date'
+                   type='date' />
+            <span class='text-sm text-red-500'> {{form.date.errors}} </span>
+        </div>
+
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Time
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded  block  w-full  outline-none text-lg text-left'
+                   name='time'
+                   type='time' />
+            <span class='text-sm text-red-500'> {{form.time.errors}} </span>
+        </div> -->
+
+
+        <div class='m-2'>
+            <label style='font-family:"Work Sans";'
+                   class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block'>
+                Amount in dollars
+            </label>
+            <input style='font-family:"Raleway";'
+                   required
+                   class='pt-3 pr-5 pb-3 pl-5 rounded block w-full  outline-none text-lg text-left'
+                   name='amount'
+                   type='decimal' />
+            <span class='text-sm text-red-700 py-2 inline-block'> {{form.amount.errors}}
+            </span>
+
+        </div>
+
+        <div>
+            <p style="font-family:Raleway"
+               class='toggleForms  text-gray-700 md:text-white pt-5 text-base text-center '>
+                Your external wallet will be credited accordingly immediately we process your
+                request
+            </p>
+            <br>
+
+        </div>
+
+        <button class='block  mx-auto w-full  hover:bg-green-700 mt-4  my-2 bg-green-700 rounded-lg ring-2 ring-green-900 text-2xl text-white  text-center py-3 px-5 outline-none'
+                type='submit'>
+            Proceed </button>
+    </form>
+</div>
+<!-- end of withdrawal  -->
+
+<!-- Display overs for the coins  -->
+
+<!-- Bitcoin  -->
+
+<div id='fundWithBitcoin'
+     class=" coinBox  hidden bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
+
+    <i onclick="this.parentElement.style.display = 'none'"
+       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+    <h4 style='font-family: "Work Sans";'
+        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Bitcoin </h4>
+    <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
+         alt='bitcoin'
+         src='{% static "services/bitcoin2.jpg" %}'
+         width="300"
+         height="300">
+
+    <p style="font-family: Raleway"
+       class='text-center p-2 text-base lowercase'> Scan to fund your wallet with bitcoin or copy
+        the address below </p>
+    <p style="font-family:roboto"
+       class="text-center font-bold p-2 text-lg lowercase bg-gray-900 text-white select-none">
+        {{bitcoinAddress}} &nbsp;&nbsp;&nbsp; <button style="font-family:'Work sans';"
+                class="inline-block px-2 rounded-xl font-normal  py-1 text-center text-sm text-white hover:bg-gray-600 bg-gray-700"
+                style='font-family:Comfortaa'> copy</button> </p>
+
+</div>
+
+<!-- Ethereum  -->
+
+<div id='fundWithEthereum'
+     class="coinBox hidden  bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
+
+    <i onclick="this.parentElement.style.display = 'none'"
+       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+    <h4 style='font-family: "Work Sans";'
+        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Ethereum </h4>
+    <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
+         alt='ethereum'
+         src='{% static "services/eth1.jpg" %}'
+         width="300"
+         height="300">
+
+    <p style="font-family: Raleway"
+       class='text-center p-2 text-base lowercase'> Scan to fund your wallet with ethereum or copy
+        the address below </p>
+    <p style="font-family:roboto"
+       class="text-center font-bold p-2 text-lg lowercase bg-gray-900 text-white select-none">
+        {{ethereumAddress}} &nbsp;&nbsp;&nbsp; <button style="font-family:'Work sans';"
+                class="inline-block px-2 rounded-xl font-normal  py-1 text-center text-sm text-white hover:bg-gray-600 bg-gray-700"
+                style='font-family:Comfortaa'> copy</button> </p>
+
+</div>
+
+<!-- Dogecoin  -->
+
+<div id='fundWithDogecoin'
+     class=" coinBox hidden bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
+
+    <i onclick="this.parentElement.style.display = 'none'"
+       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+    <h4 style='font-family: "Work Sans";'
+        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Dogecoin </h4>
+    <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
+         alt='bitcoin'
+         src='{% static "services/doge1.jpg" %}'
+         width="300"
+         height="300">
+
+    <p style="font-family: Raleway"
+       class='text-center p-2 text-base lowercase'> Scan to fund your wallet with dogecoin or copy
+        the address below </p>
+    <p style="font-family:roboto"
+       class="text-center font-bold p-2 text-lg lowercase bg-gray-900 text-white select-none">
+        {{dogecoinAddress}} &nbsp;&nbsp;&nbsp; <button style="font-family:'Work sans';"
+                class="inline-block px-2 rounded-xl font-normal  py-1 text-center text-sm text-white hover:bg-gray-600 bg-gray-700"
+                style='font-family:Comfortaa'> copy</button> </p>
+
+</div>
+
+
+
+<!-- Altcoin  -->
+
+
+<div id='fundWithAltcoin'
+     class=" coinBox hidden bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
+
+    <i onclick="this.parentElement.style.display = 'none'"
+       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+    <h4 style='font-family: "Work Sans";'
+        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Altcoin </h4>
+    <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
+         alt='altcoin'
+         src='{% static "services/bitcoin1.jpg" %}'
+         width="300"
+         height="300">
+
+    <p style="font-family: Raleway"
+       class='text-center p-2 text-base lowercase'> Scan to fund your wallet with altcoin or copy
+        the address below </p>
+    <p style="font-family:roboto"
+       class="text-center font-bold p-2 text-lg lowercase bg-gray-900 text-white select-none">
+        {{altcoinAddress}} &nbsp;&nbsp;&nbsp; <button style="font-family:'Work sans';"
+                class="inline-block px-2 rounded-xl font-normal  py-1 text-center text-sm text-white hover:bg-gray-600 bg-gray-700"
+                style='font-family:Comfortaa'> copy</button> </p>
+
+</div>
+<!-- end of Display overs for the coins  -->
+
+
+
+
+
+
+
+
 <div class='md:flex md:flex-row md:flex-nowrap md:justify-between'>
 
     <div class='sticky top-0  z-10 bg-gray-700 md:hidden py-2 flex flex-row justify-between '>
@@ -43,7 +535,8 @@ Dashboard | Usbeenance
            class='bi-justify-left text-4xl text-gray-100 px-2  flex-shrink flex-grow-0'></i>
 
 
-        <button style='font-family:comfortaa'
+        <button id='depositClick'
+                style='font-family:comfortaa'
                 class='text-sm flex-initial mx-3 flex-shrink flex-grow-0 outline-none bg-gray-500 rounded-2xl font-bold inline-block ring-2 ring-gray-600 text-gray-100 text-center px-2 py-1'>
 
             Deposit
@@ -52,7 +545,7 @@ Dashboard | Usbeenance
         </button>
     </div>
     <div id='overlay'
-         class='hidden md:block fixed md:static z-10 top-0 left-0 right-0 bg-gray-700 bottom-0   lg:w-1/5
+         class='hidden md:block fixed md:static z-20 top-0 left-0 right-0 bg-gray-700 bottom-0   lg:w-1/5
          md:w-2/5
          flex-grow
          flex-shrink-0
@@ -78,7 +571,7 @@ Dashboard | Usbeenance
                     class=' text-left  rounded   text-base text-white font-normal'>
                     <i class='bi-currency-dollar text-base text-yellow-700'></i> Balance :
                     &nbsp;&nbsp;
-                    <span class='font-bold'> &dollar;100, 267</span>
+                    <span class='font-bold'> &dollar;{{request.user.wallet.balance_string}}</span>
                 </li>
                 <li style='font-family:raleway'
                     class=' text-left  rounded   text-base text-white font-normal'>
@@ -96,23 +589,24 @@ Dashboard | Usbeenance
             <ul class='flex flex-col flex-nowrap justify-center content-end space-y-2  bg-gray-700'>
                 <li
                     class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <a href=''><i class='bi bi-currency-bitcoin'></i> Deposit </a>
+                    <a href='/dashboard/'><i class='bi bi-currency-bitcoin'></i> Deposit </a>
+                </li>
+                <li id='showWithdrawForm'
+                    class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
+                    <i class='bi bi-currency-dollar'></i> Withdraw
+                </li>
+                <li id='showVerifyForm'
+                    class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
+                    <i class='bi bi-check2-circle'></i> Verify transfer
                 </li>
                 <li
                     class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <a href=''><i class='bi bi-currency-dollar'></i> Withdraw </a>
+                    <a href='{% url "services:history_view" %}'><i class='bi bi-clock-history'></i>
+                        Transaction history </a>
                 </li>
-                <li
-                    class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <a href=''><i class='bi bi-check2-circle'></i> Verify transfer </a>
-                </li>
-                <li
-                    class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <a href=''><i class='bi bi-clock-history'></i> Transaction history </a>
-                </li>
-                <li
-                    class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <a href=''><i class='bi bi-exclamation-circle'></i> Report an issue </a>
+                <li id='reportAbuse'
+                    class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
+                    <i class='bi bi-exclamation-circle'></i> Report an issue
                 </li>
 
             </ul>
@@ -133,6 +627,8 @@ Dashboard | Usbeenance
 
     </div>
 
+
+    {% block content %}
     <div class='lg:w-4/5 md:w-3/5 flex-grow flex-shrink-0 bg-gray-300 min-h-screen'>
 
         <div
@@ -152,7 +648,8 @@ Dashboard | Usbeenance
 
             <button class='flex-initial transform scale-90 self-center  cursor-pointer flex-grow-0 ring-2 ring-yellow-500 hover:bg-yellow-600 hover:text-white text-white-900 font-normal text-small bg-yellow-400 rounded-xl  px-3 md:px-2 shadow-2xl
                 text-center'>
-                <a href=''> <i class='bi-power inline-block  md:py-4 md:px-1 text-4xl'></i>&nbsp;
+                <a href='{%  url "services:logout_view" %}'> <i
+                       class='bi-power inline-block  md:py-4 md:px-1 text-4xl'></i>&nbsp;
                     <span class='hidden md:inline'></span>
                 </a>
             </button>
@@ -161,7 +658,7 @@ Dashboard | Usbeenance
 
 
         <!-- Boxes for coins   -->
-        <div class=''>
+        <div id='depositRealm'>
             <p style='font-family:raleway'
                class='text-md font-bold text-center md:text-left text-gray-700 p-4 '> <i
                    class='bi-currency-dollar text-xl p-2 bg-gray-900 text-white rounded-full'></i>
@@ -182,7 +679,8 @@ Dashboard | Usbeenance
                          height='150'
                          class='object-contain block mx-auto rounded-full my-2 '>
 
-                    <button style='font-family:"work sans";'
+                    <button id="showBitcoin"
+                            style='font-family:"work sans";'
                             class='block w-full text-lg hover:bg-gray-600 font-normal text-yellow-300 bg-gray-700 bottom-0 absolute'>
                         Bitcoin <i class='bi-plus text-2xl py-4 inline-block'></i></button>
                 </div>
@@ -194,7 +692,8 @@ Dashboard | Usbeenance
                          width='150'
                          height='150'
                          class='object-contain block mx-auto rounded-full my-2'>
-                    <button style='font-family:"work sans";'
+                    <button id="showEthereum"
+                            style='font-family:"work sans";'
                             class='block w-full text-lg hover:bg-gray-600 font-normal text-yellow-300 bg-gray-700 bottom-0 absolute'>
                         Ethereum <i class='bi-plus text-2xl py-4 inline-block'></i></button>
                 </div>
@@ -205,7 +704,8 @@ Dashboard | Usbeenance
                          width='150'
                          height='150'
                          class='object-contain block mx-auto rounded-full my-2'>
-                    <button style='font-family:"work sans";'
+                    <button id="showDogecoin"
+                            style='font-family:"work sans";'
                             class='block w-full text-lg hover:bg-gray-600 font-normal text-yellow-300 bg-gray-700 bottom-0 absolute'>
                         Dogecoin <i class='bi-plus text-2xl py-4 inline-block'></i></button>
                 </div>
@@ -216,7 +716,8 @@ Dashboard | Usbeenance
                          width='150'
                          height='150'
                          class='object-contain block mx-auto rounded-full my-2'>
-                    <button style='font-family:"work sans";'
+                    <button id="showAltcoin"
+                            style='font-family:"work sans";'
                             class='block w-full text-lg hover:bg-gray-600 font-normal text-yellow-300 bg-gray-700 bottom-0 absolute'>
                         Altcoin <i class='bi-plus text-2xl py-4 inline-block'></i></button>
                 </div>
@@ -367,6 +868,8 @@ Dashboard | Usbeenance
 
 
     </div>
+    {% endblock content %}
+
 
 
 
@@ -377,4 +880,5 @@ Dashboard | Usbeenance
 
 
 {% block footer %}
+
 {% endblock footer %}

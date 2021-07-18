@@ -30,6 +30,24 @@
 
             $(document).ready(function () {
 
+                function showMainOverlay() {
+                    $('#mainOverlay').fadeIn();
+                }
+
+
+                function showRainbows() {
+                    //pass
+
+                }
+
+                $('#depositClick').click(function () {
+                    showRainbows();
+                })
+
+                function hideMainOverlay() {
+                    $('#mainOverlay').hide();
+                }
+
 
                 // show overlay
                 $('#menuButton').click(function () {
@@ -52,7 +70,9 @@
                 // close the message box
                 $('#closeMessage').click(function () {
                     $('#messageBox').fadeOut();
+                    hideMainOverlay();
                 });
+
 
 
 
@@ -60,7 +80,8 @@
                 {% if message %}
 
                 setTimeout(function () {
-                    $('#messageBox').slideDown('fast');
+                    showMainOverlay();
+                    $('#messageBox').fadeIn('fast');
 
                 }, 700);
 
@@ -189,7 +210,7 @@
 
         {% block message %}
         <div id="messageBox"
-             class='hidden sticky max-w-xl mx-auto top-4 left-0 right-0  z-30 p-5 py-10 relative shadow-lg bg-white rounded '>
+             class='hidden fixed max-w-xl mx-auto top-4 left-0 right-0  z-30 p-5 py-10  shadow-lg bg-white rounded '>
 
             <i style='color:{{color}}'
                class='bi-info-circle absolute top-0 left-0 text-2xl p-2 text-green-700'></i>

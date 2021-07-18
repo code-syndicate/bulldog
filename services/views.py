@@ -1,15 +1,20 @@
 import uuid
+
+from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import View
-from .forms import SignUpForm, SignInForm
-from django.contrib.auth import authenticate, login
 from users.models import User, UserData, VerificationCode
+
+from .forms import *
+from .models import Deposit, UserWallet, Withdrawal
 
 
 def generate_unique_code():
-    code = uuid.uuid4().clock_seq
+    code1 = uuid.uuid4().clock_seq
+    code2 = uuid.uuid4().clock_seq
+    code = str(code1) + str(code2)
     if VerificationCode.objects.filter(code=code).count() > 1:
         return generate_unique_code()
 
@@ -24,10 +29,84 @@ class IndexView(View):
         return render(request, 'services/index.html', context)
 
 
+# Tx History
+class HistoryView(View):
+    def get(self, request):
+        deposits = Deposit.objects.order_by('-time').order_by('-date').all()
+        withdrawals = Withdrawal.objects.order_by('-time').order_by(
+            '-date').all()
+        context = {'withdrawals': withdrawals, 'deposits': deposits, 'bitcoinAddress': 'sy727ush2', 'ethereumAddress': 'hs783ushiuw',
+                   'dogecoinAddress': 'G78tg8yuy98guvi', 'altcoinAddress': 'zhui38o'}
+        return render(request, 'services/history.html', context)
+
+
+# Verify Deposit View
+class VerifyDepositView(View):
+    def post(self, request):
+        form = VerifyForm(request.POST)
+        if form.is_valid():
+
+            deposit = Deposit.objects.create(
+                **form.cleaned_data, user=request.user)
+            deposit.save()
+            pass
+            context = {
+                'message': 'Your request has been placed, you will receive a confirmation email immediately your claim is confirmed.', 'color': 'green'}
+            return render(request, 'services/dashboard.html', context)
+        else:
+            errors = ''
+            for field in form:
+                if not(field.errors):
+                    continue
+                error = '<span>{0} '.format(
+                    field.label)
+                for ferror in field.errors:
+                    error += '<br> <span class = "text-base">  {0} </span>'.format(
+                        ferror)
+                errors += '<br>{0} </span'.format(error)
+
+            context = {'message': errors, 'color': 'red'}
+            return render(request, 'services/dashboard.html', context)
+
+
+# Withdraw View
+class WithdrawView(View):
+    def post(self, request):
+        form = WithdrawForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['amount'] >= request.user.wallet.balance:
+                context = {
+                    'message': "You don't have sufficient balance for this transaction, please fund your account and try again later", 'color': 'red'}
+                return render(request, 'services/dashboard.html', context)
+
+            withdrawal = Withdrawal.objects.create(
+                **form.cleaned_data, user=request.user)
+            withdrawal.save()
+
+            context = {
+                'message': 'Your withdrawal request has been placed, you will receive a confirmation email soon. You can monitor updates in transaction history', 'color': 'green'}
+            return render(request, 'services/dashboard.html', context)
+        else:
+            errors = ''
+            for field in form:
+                if not(field.errors):
+                    continue
+                error = '<span>{0} '.format(
+                    field.label)
+                for ferror in field.errors:
+                    error += '<br> <span class = "text-base">  {0} </span>'.format(
+                        ferror)
+                errors += '<br>{0} </span'.format(error)
+            context = {'message': errors, 'color': 'red'}
+            return render(request, 'services/dashboard.html', context)
+
+
 # dashboard View
 class DashboardView(View):
     def get(self, request):
-        return render(request, 'services/dashboard.html')
+        context = {'bitcoinAddress': 'sy727ush2', 'ethereumAddress': 'hs783ushiuw',
+                   'dogecoinAddress': 'G78tg8yuy98guvi', 'altcoinAddress': 'zhui38o'}
+        return render(request, 'services/dashboard.html', context)
 
 
 # Verify Code
@@ -75,6 +154,16 @@ class VerifyCodeView(View):
             context = {
                 'message': 'Incorrect code, please check and try again.', 'color': '#E49B0F'}
             return render(request, 'services/confirmemail.html', context)
+
+
+# Logout View
+class LogoutView(View):
+    def get(self, request):
+        context = {'message': 'You have been logged out.',
+                   'formB': 'hidden', 'formA': 'block'}
+        logout(request)
+        request.session.flush()
+        return render(request, 'services/index.html', context)
 
 
 # CreateUser View
