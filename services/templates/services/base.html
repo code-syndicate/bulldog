@@ -12,11 +12,13 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwind/static/services/css/2.0.2/tailwind.min.css"
+              rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
               rel="stylesheet">
         <title>
             {% block title %}
-            Broker
+            usbeenance
             {% endblock %}
         </title>
 
@@ -130,14 +132,15 @@
                 <ul
                     class='flex  flex-col md:flex-row justify-center mt-4 md:mt-0 md:justify-around space-y-10 md:space-y-0 md:space-x-5'>
                     <li class='p-1 px-3 mx-2  rounded-lg hover:text-yellow-400 text-left'> <a
-                           href=''>
+                           href='/'>
                             <i
                                class='bi-house-door text-2xl text-yellow-400 p-2 hover:text-gray-700'></i>
 
                             Home
                         </a>
                     </li>
-                    <li class='p-1 px-3 mx-2  rounded-lg hover:text-yellow-400  '><a href=''>
+                    <li class='p-1 px-3 mx-2  rounded-lg hover:text-yellow-400  '><a
+                           href='/dashboard/'>
                             <i
                                class='bi-currency-bitcoin text-2xl text-yellow-400 p-2 hover:text-gray-700'></i>
                             Deposit
@@ -147,13 +150,14 @@
                         px-3
                         mx-2
                         rounded-lg
-                        hover:text-yellow-400'><a href=''> <i class='
+                        hover:text-yellow-400'><a href='/dashboard/'> <i class='
                                                 bi-cash-coin
                                                 text-2xl
                                                 text-yellow-400
                                                 p-2
                                                 hover:text-gray-700'></i> Withdraw </a></li>
-                    <li class='p-1 px-3 mx-2  rounded-lg  hover:text-yellow-400 '><a href=''>
+                    <li class='p-1 px-3 mx-2  rounded-lg  hover:text-yellow-400 '><a
+                           href='/contact-us/'>
                             <i
                                class='bi-envelope text-2xl text-yellow-400 p-2 hover:text-gray-700'></i>
                             Contact us </a></li>
@@ -162,12 +166,12 @@
                         px-3
                         mx-2
                         rounded-lg
-                        hover:text-yellow-400 '><a href=''><i class='
+                        hover:text-yellow-400 '><a href='/faq/'><i class='
                                                 bi-info-circle
                                                 text-2xl
                                                 text-yellow-400
                                                 p-2
-                                                hover:text-gray-700'></i> About us </a></li>
+                                                hover:text-gray-700'></i> FAQ </a></li>
 
 
                 </ul>

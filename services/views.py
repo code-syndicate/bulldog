@@ -32,6 +32,18 @@ class IndexView(View):
         return render(request, 'services/index.html', context)
 
 
+class FAQView(View):
+    def get(self, request):
+        context = {}
+        return render(request, 'services/faq.html', context)
+
+
+class ContactView(View):
+    def get(self, request):
+        context = {}
+        return render(request, 'services/contact.html', context)
+
+
 # Tx History
 class HistoryView(LoginRequiredMixin,  View):
     login_url = '/authenticate-user/'
@@ -41,8 +53,8 @@ class HistoryView(LoginRequiredMixin,  View):
         deposits = Deposit.objects.order_by('-time').order_by('-date').all()
         withdrawals = Withdrawal.objects.order_by('-time').order_by(
             '-date').all()
-        context = {'withdrawals': withdrawals, 'deposits': deposits, 'bitcoinAddress': 'sy727ush2', 'ethereumAddress': 'hs783ushiuw',
-                   'dogecoinAddress': 'G78tg8yuy98guvi', 'altcoinAddress': 'zhui38o'}
+        context = {'withdrawals': withdrawals, 'deposits': deposits, 'bitcoinAddress': '1EARy1qYovB2faE9Tgdb4WVsgPAFRYRSyd', 'ethereumAddress': '0x9cbd14f198d4addad022beb882ad069ec2163a3c',
+                   'dogecoinAddress': 'D8Kr7nbfG9ykqes5miiq78mfiF6Hf2XnmD', 'litecoinAddress': 'LT4o4VedSQrnCFQus8oPJWMRe2xnNQonUq'}
         return render(request, 'services/history.html', context)
 
 
@@ -119,8 +131,8 @@ class DashboardView(LoginRequiredMixin, View):
     redirect_field_name = 'redirect_to'
 
     def get(self, request):
-        context = {'bitcoinAddress': 'sy727ush2', 'ethereumAddress': 'hs783ushiuw',
-                   'dogecoinAddress': 'G78tg8yuy98guvi', 'altcoinAddress': 'zhui38o'}
+        context = {'bitcoinAddress': '1EARy1qYovB2faE9Tgdb4WVsgPAFRYRSyd', 'ethereumAddress': '0x9cbd14f198d4addad022beb882ad069ec2163a3c',
+                   'dogecoinAddress': 'D8Kr7nbfG9ykqes5miiq78mfiF6Hf2XnmD', 'litecoinAddress': 'LT4o4VedSQrnCFQus8oPJWMRe2xnNQonUq'}
         return render(request, 'services/dashboard.html', context)
 
 

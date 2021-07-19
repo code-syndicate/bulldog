@@ -14,7 +14,7 @@ class Deposit(models.Model):
         ('Bitcoin', 'Bitcoin'),
         ('Ethereum', 'Ethereum'),
         ('Dogecoin', 'Dogecoin'),
-        ('Altcoin', 'Altcoin')
+        ('Litecoin', 'Litecoin')
     ))
     date = models.DateField()
     time = models.TimeField()
@@ -43,7 +43,7 @@ class Withdrawal(models.Model):
         ('Bitcoin', 'Bitcoin'),
         ('Ethereum', 'Ethereum'),
         ('Dogecoin', 'Dogecoin'),
-        ('Altcoin', 'Altcoin')
+        ('Litecoin', 'Litecoin')
     ))
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now_add=True)

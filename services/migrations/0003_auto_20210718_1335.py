@@ -23,21 +23,25 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='deposit',
             name='asset',
-            field=models.CharField(choices=[('Bitcoin', 'Bitcoin'), ('Ethereum', 'Ethereum'), ('Dogecoin', 'Dogecoin'), ('Altcoin', 'Altcoin')], max_length=48),
+            field=models.CharField(choices=[('Bitcoin', 'Bitcoin'), ('Ethereum', 'Ethereum'), (
+                'Dogecoin', 'Dogecoin'), ('Litecoin', 'Litecoin')], max_length=48),
         ),
         migrations.AlterField(
             model_name='deposit',
             name='status',
-            field=models.CharField(choices=[('pending', 'Pending'), ('declined', 'Declined'), ('verified', 'Verified'), ('credited', 'Credited')], default='pending', max_length=48),
+            field=models.CharField(choices=[('pending', 'Pending'), ('declined', 'Declined'), (
+                'verified', 'Verified'), ('credited', 'Credited')], default='pending', max_length=48),
         ),
         migrations.AlterField(
             model_name='withdrawal',
             name='asset',
-            field=models.CharField(choices=[('Bitcoin', 'Bitcoin'), ('Ethereum', 'Ethereum'), ('Dogecoin', 'Dogecoin'), ('Altcoin', 'Altcoin')], max_length=48),
+            field=models.CharField(choices=[('Bitcoin', 'Bitcoin'), ('Ethereum', 'Ethereum'), (
+                'Dogecoin', 'Dogecoin'), ('Litecoin', 'Litecoin')], max_length=48),
         ),
         migrations.AlterField(
             model_name='withdrawal',
             name='status',
-            field=models.CharField(choices=[('pending', 'Pending'), ('declined', 'Declined'), ('paid', 'Paid')], default='pending', max_length=48),
+            field=models.CharField(choices=[('pending', 'Pending'), (
+                'declined', 'Declined'), ('paid', 'Paid')], default='pending', max_length=48),
         ),
     ]

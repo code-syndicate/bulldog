@@ -1,0 +1,197 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .wellcome_heading_text > h2 {
+        font-size: 48px;
+    }
+
+    .hero-single-slide {
+        height: 600px;
+    }
+
+    .social-icon a {
+        font-size: 16px;
+        margin: 0 6px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-toggler {
+        border-color: #fff;
+        margin: 17px 0;
+    }
+
+    .header-btn {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    #airNav {
+        background-color: #000000;
+        padding: 30px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 5px 30px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 5px 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .wellcome_heading_text > h2 {
+        font-size: 42px;
+    }
+
+    .hero-single-slide {
+        height: 600px;
+    }
+
+    .our_advisor_area .owl-nav {
+        top: -80px;
+    }
+
+    .welcome-home-3 {
+        height: 700px;
+    }
+
+    .wellcome_heading_text.home_3 h2 {
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .main-header-area {
+        background-color: #000000;
+        height: 70px;
+        width: 100% !important;
+    }
+
+    .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.50);
+        margin: 8px 0;
+    }
+
+    .navbar-toggler-icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    .navbar-toggler {
+        padding: 4px 10px;
+    }
+
+    .header-btn {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    #airNav {
+        background-color: #000000;
+        padding: 30px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 5px 30px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 5px 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    #airNav .classy-btn {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+
+    .hero-single-slide {
+        height: 800px;
+    }
+
+    .wellcome_heading_text > h2 {
+        font-size: 34px;
+    }
+
+    .our_advisor_area .owl-nav {
+        top: -60px;
+    }
+
+    .distribution-desc-area h2 {
+        font-size: 30px;
+    }
+
+    .single-airdrop-area- .social-icon {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .pagination-area .pagination-nav a {
+        margin-bottom: 15px;
+    }
+
+    .social-icon a {
+        font-size: 16px;
+        margin: 0 5px;
+    }
+
+    .price-tag h5 {
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+
+    #clock {
+        font-size: 26px;
+    }
+
+    #clock span {
+        font-size: 14px;
+    }
+
+    .subscribe_bar > p {
+        font-size: 15px;
+    }
+
+    .social_share_area > a > i {
+        margin: 0 4px;
+        font-size: 16px;
+    }
+
+    .wellcome_heading_text.home_2 h2 {
+        font-size: 36px;
+    }
+
+    .welcome-home-2 {
+        height: 600px;
+    }
+
+    .welcome-home-3 {
+        height: 900px;
+    }
+
+    .wellcome_heading_text.home_3 h2 {
+        font-size: 28px;
+    }
+
+    .wellcome_heading_text.home_3 h6 {
+        font-size: 14px;
+    }
+
+    .menu_area .navbar-brand img {
+        width: 80px;
+    }
+}
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+    .hero-single-slide {
+        height: 900px;
+    }
+
+    .wellcome_heading_text.home_3 h2 {
+        font-size: 38px;
+    }
+}

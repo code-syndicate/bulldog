@@ -17,34 +17,42 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Withdrawal',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('address', models.CharField(max_length=48)),
                 ('amount', models.DecimalField(decimal_places=2, max_digits=8)),
-                ('asset', models.CharField(choices=[('bitcoin', 'Bitcoin'), ('ethereum', 'Ethereum'), ('dogecoin', 'Dogecoin'), ('altcoin', 'Altcoin')], max_length=48)),
+                ('asset', models.CharField(choices=[('bitcoin', 'Bitcoin'), ('ethereum', 'Ethereum'), (
+                    'dogecoin', 'Dogecoin'), ('litecoin', 'Litecoin')], max_length=48)),
                 ('date', models.DateField(auto_now_add=True)),
                 ('time', models.TimeField(auto_now_add=True)),
                 ('has_been_verified', models.BooleanField(default=False)),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('declined', 'Declined'), ('paid', 'Paid')], max_length=48)),
+                ('status', models.CharField(choices=[
+                 ('pending', 'Pending'), ('declined', 'Declined'), ('paid', 'Paid')], max_length=48)),
                 ('has_been_settled', models.BooleanField(default=False)),
                 ('txref', models.UUIDField(default=uuid.uuid4, unique=True)),
                 ('date_created', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='withdrawals', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                 related_name='withdrawals', to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
             name='Deposit',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('address', models.CharField(max_length=48)),
                 ('amount', models.DecimalField(decimal_places=4, max_digits=8)),
-                ('asset', models.CharField(choices=[('bitcoin', 'Bitcoin'), ('ethereum', 'Ethereum'), ('dogecoin', 'Dogecoin'), ('altcoin', 'Altcoin')], max_length=48)),
+                ('asset', models.CharField(choices=[('bitcoin', 'Bitcoin'), ('ethereum', 'Ethereum'), (
+                    'dogecoin', 'Dogecoin'), ('litecoin', 'Litecoin')], max_length=48)),
                 ('date', models.DateField()),
                 ('time', models.TimeField()),
                 ('has_been_verified', models.BooleanField(default=False)),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('declined', 'Declined'), ('verified', 'Verified'), ('credited', 'Credited')], max_length=48)),
+                ('status', models.CharField(choices=[('pending', 'Pending'), ('declined', 'Declined'), (
+                    'verified', 'Verified'), ('credited', 'Credited')], max_length=48)),
                 ('txref', models.UUIDField(default=uuid.uuid4, unique=True)),
                 ('date_created', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='deposits', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                 related_name='deposits', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

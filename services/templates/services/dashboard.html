@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Dashboard | Usbeenance
+Dashboard | usbeenance
 {% endblock title %}
 
 {% block script %}
@@ -105,12 +105,12 @@ Dashboard | Usbeenance
 
 
         });
-        $('#showAltcoin').click(function () {
+        $('#showLitecoin').click(function () {
             closeAllBoxes();
             showMainOverlay();
 
 
-            $("#fundWithAltcoin").fadeIn();
+            $("#fundWithLitecoin").fadeIn();
 
 
         });
@@ -206,7 +206,7 @@ Dashboard | Usbeenance
                 <option value="Bitcoin"> Bitcoin</option>
                 <option value="Ethereum"> Ethereum</option>
                 <option value="Dogecoin"> Dogecoin</option>
-                <option value="Altcoin"> Altcoin</option>
+                <option value="Litecoin"> Litecoin</option>
             </select>
             <span class='text-sm text-red-500'> {{form.coin.errors}} </span>
         </div>
@@ -321,7 +321,7 @@ Dashboard | Usbeenance
                 <option value="Bitcoin"> Bitcoin</option>
                 <option value="Ethereum"> Ethereum</option>
                 <option value="Dogecoin"> Dogecoin</option>
-                <option value="Altcoin"> Altcoin</option>
+                <option value="Litecoin"> Litecoin</option>
             </select>
             <span class='text-sm text-red-500'> {{form.coin.errors}} </span>
         </div>
@@ -418,7 +418,7 @@ Dashboard | Usbeenance
         class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Bitcoin </h4>
     <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
          alt='bitcoin'
-         src='{% static "services/bitcoin2.jpg" %}'
+         src='{% static "services/bitadd.jpeg" %}'
          width="300"
          height="300">
 
@@ -446,7 +446,7 @@ Dashboard | Usbeenance
         class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Ethereum </h4>
     <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
          alt='ethereum'
-         src='{% static "services/eth1.jpg" %}'
+         src='{% static "services/ethadd.jpeg" %}'
          width="300"
          height="300">
 
@@ -474,7 +474,7 @@ Dashboard | Usbeenance
         class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Dogecoin </h4>
     <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
          alt='bitcoin'
-         src='{% static "services/doge1.jpg" %}'
+         src='{% static "services/dogeadd.jpeg" %}'
          width="300"
          height="300">
 
@@ -491,10 +491,10 @@ Dashboard | Usbeenance
 
 
 
-<!-- Altcoin  -->
+<!-- Litecoin  -->
 
 
-<div id='fundWithAltcoin'
+<div id='fundWithLitecoin'
      class=" coinBox hidden bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
 
     <i onclick="this.parentElement.style.display = 'none'"
@@ -502,19 +502,19 @@ Dashboard | Usbeenance
 
 
     <h4 style='font-family: "Work Sans";'
-        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Altcoin </h4>
+        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Litecoin </h4>
     <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
-         alt='altcoin'
-         src='{% static "services/bitcoin1.jpg" %}'
+         alt='litecoin'
+         src='{% static "services/bitadd.jpeg" %}'
          width="300"
          height="300">
 
     <p style="font-family: Raleway"
-       class='text-center p-2 text-base lowercase'> Scan to fund your wallet with altcoin or copy
+       class='text-center p-2 text-base lowercase'> Scan to fund your wallet with litecoin or copy
         the address below </p>
     <p style="font-family:roboto"
        class="text-center font-bold p-2 text-lg lowercase bg-gray-900 text-white select-none">
-        {{altcoinAddress}} &nbsp;&nbsp;&nbsp; <button style="font-family:'Work sans';"
+        {{litecoinAddress}} &nbsp;&nbsp;&nbsp; <button style="font-family:'Work sans';"
                 class="inline-block px-2 rounded-xl font-normal  py-1 text-center text-sm text-white hover:bg-gray-600 bg-gray-700"
                 style='font-family:Comfortaa'> copy</button> </p>
 
@@ -554,7 +554,7 @@ Dashboard | Usbeenance
 
 
         <img alt='profile'
-             src='{% static 'services/bitcoin1.jpg' %}'
+             src='{% static 'services/bitcoin4.png' %}'
              width='150'
              height='150'
              class='rounded-full ring-2 ring-gray-700 border-2 border-solid border-gray-600 shadow-xl min-h-8 mx-auto block my-4' />
@@ -710,16 +710,16 @@ Dashboard | Usbeenance
                         Dogecoin <i class='bi-plus text-2xl py-4 inline-block'></i></button>
                 </div>
                 <div style='height:250px'
-                     title='Fund with altcoin'
+                     title='Fund with litecoin'
                      class='transform hover:scale-105  flex-initial w-5/6 mx-auto lg:w-1/5 flex-shrink flex-grow-0 self-strech bg-yellow-700'>
-                    <img src='{% static 'services/altcoin3.png' %}'
+                    <img src='{% static 'services/litecoin3.png' %}'
                          width='150'
                          height='150'
                          class='object-contain block mx-auto rounded-full my-2'>
-                    <button id="showAltcoin"
+                    <button id="showLitecoin"
                             style='font-family:"work sans";'
                             class='block w-full text-lg hover:bg-gray-600 font-normal text-yellow-300 bg-gray-700 bottom-0 absolute'>
-                        Altcoin <i class='bi-plus text-2xl py-4 inline-block'></i></button>
+                        Litecoin <i class='bi-plus text-2xl py-4 inline-block'></i></button>
                 </div>
 
 
