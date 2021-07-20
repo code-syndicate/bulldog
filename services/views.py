@@ -137,12 +137,11 @@ class DashboardView(LoginRequiredMixin, View):
 
 
 # Verify Code
-class VerifyCodeView(LoginRequiredMixin, View):
-    login_url = '/authenticate-user/'
-    redirect_field_name = 'redirect_to'
+class VerifyCodeView(View):
 
     def post(self, request):
         code = request.POST.get('code', '')
+        # print("Code is :", code)
 
         if code == '':
             context = {'message': 'The field is empty', 'color': '#E49B0F'}
@@ -173,6 +172,7 @@ class VerifyCodeView(LoginRequiredMixin, View):
                 firstname=fn, lastname=ln, email=email, data=user_data)
             user.save()
             user.set_password(password2)
+            # print(user.password)
             user.save()
             request.session['temporal_saved_data'] = None
             request.session.flush()
