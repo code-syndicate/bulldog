@@ -1,6 +1,7 @@
 """
 Django settings for bulldog project.
 """
+import os
 from pathlib import Path
 
 import dj_database_url
@@ -17,8 +18,8 @@ SECRET_KEY = 'django-insecure-0%-gq^0-0d&uj#x*_#7=req&5znc=9!o@7m%5(fqcmw9^j3c&g
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+# DEBUG = True
 
 
 ALLOWED_HOSTS = [
