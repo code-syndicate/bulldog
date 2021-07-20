@@ -23,7 +23,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'usbeeenance.herokuapp.com',
+    'usbeenance.herokuapp.com',
     'usbeenance.com',
     'localhost',
 ]
