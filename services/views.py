@@ -171,6 +171,7 @@ class VerifyCodeView(LoginRequiredMixin, View):
             user_data.save()
             user = User.objects.create(
                 firstname=fn, lastname=ln, email=email, data=user_data)
+            user.save()
             user.set_password(password2)
             user.save()
             request.session['temporal_saved_data'] = None
