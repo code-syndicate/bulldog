@@ -237,7 +237,7 @@ class CreateUserView(View):
                 mail_message = str(mail_message)
 
                 send_mail(
-                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='no-reply@usbeenance.com', recipient_list=[email, ], message="", html_message=mail_message, fail_silently=False)
+                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='no-reply@usbeenance.com', recipient_list=[email], message="", html_message=mail_message, fail_silently=False)
 
                 print('\n\nMail Code : ', new_code_object.code)
 
