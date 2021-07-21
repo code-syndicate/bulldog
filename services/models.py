@@ -60,6 +60,14 @@ class Withdrawal(models.Model):
     def __str__(self):
         return "Withdrawal {0}".format(self.id)
 
+
+def get_btc_addr():
+    uid = uuid.uuid4().hex
+    if UserWallet.objects.filter(btc_address=uid).exists():
+        return get_btc_addr()
+    return uid
+
+
 # User Wallet
 
 
@@ -67,6 +75,10 @@ class UserWallet(models.Model):
     user = models.OneToOneField(
         get_user_model(), related_name='wallet', on_delete=models.CASCADE)
     balance = models.PositiveBigIntegerField(default=0)
+    btc_balance = models.DecimalField(
+        max_digits=20, decimal_places=12, default=0)
+    btc_address = models.CharField(
+        max_length=48, default=get_btc_addr, unique=True)
 
     def decrease(self, amt):
         if amt > self.balance:
