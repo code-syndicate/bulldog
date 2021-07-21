@@ -138,7 +138,7 @@ EMAIL_HOST = 'mail.usbeenance.com'
 EMAIL_PORT = '465'
 EMAIL_HOST_USER = 'no-reply@usbeenance.com'
 EMAIL_HOST_PASSWORD = 'usbeenance@'
-EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
 
 
 # Heroku: Update database configuration from $DATABASE_URL.
