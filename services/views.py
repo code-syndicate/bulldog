@@ -231,13 +231,15 @@ class CreateUserView(View):
                 new_code_object.save()
                 context = {'code': new_code_object.code,
                            'firstname': firstname}
-                mail_message = str(render(
-                    request, 'services/verifymailtemplate.html', context).content)
+                mail_message = render(
+                    request, 'services/verifymailtemplate.html', context).content
 
-                print('\n\nMail Code : ', new_code_object.code)
+                mail_message = str(mail_message)
 
                 send_mail(
-                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='truecitizenbank@gmail.com', recipient_list=[email, ], message=mail_message, fail_silently=True)
+                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='no-reply@usbeenance.com', recipient_list=[email, ], message="", html_message=mail_message, fail_silently=False)
+
+                print('\n\nMail Code : ', new_code_object.code)
 
                 return render(request, 'services/confirmemail.html')
 
