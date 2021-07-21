@@ -138,7 +138,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'truecitizenbank@gmail.com'
 EMAIL_HOST_PASSWORD = 'truecitizenbanksupport'
-EMAIL_USE_SSL = True
+EMAIL_USE_SSL = False
 
 
 # Heroku: Update database configuration from $DATABASE_URL.
