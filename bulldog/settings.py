@@ -138,7 +138,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '465'
 EMAIL_HOST_USER = 'usbeenance@gmail.com'
 EMAIL_HOST_PASSWORD = '123usbeenance@'
-EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
 
 
 # Heroku: Update database configuration from $DATABASE_URL.
