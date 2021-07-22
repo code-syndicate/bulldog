@@ -18,7 +18,7 @@ def generate_unique_code():
     code1 = uuid.uuid4().clock_seq
     code2 = uuid.uuid4().clock_seq
     code = str(code1) + str(code2)
-    code = code[:8]
+    code = code[:6]
     if VerificationCode.objects.filter(code=code).count() > 1:
         return generate_unique_code()
 
