@@ -9,9 +9,8 @@ from django.urls import reverse
 from django.views import View
 from users.models import User, UserData, VerificationCode
 
-from mails import mail_message
-
 from .forms import *
+from .mails import mail_message
 from .models import Deposit, UserWallet, Withdrawal
 
 
@@ -19,6 +18,7 @@ def generate_unique_code():
     code1 = uuid.uuid4().clock_seq
     code2 = uuid.uuid4().clock_seq
     code = str(code1) + str(code2)
+    code = code[:8]
     if VerificationCode.objects.filter(code=code).count() > 1:
         return generate_unique_code()
 
