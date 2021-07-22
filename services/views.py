@@ -2,11 +2,14 @@ import uuid
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core import mail
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import View
 from users.models import User, UserData, VerificationCode
+
+from mails import mail_message
 
 from .forms import *
 from .models import Deposit, UserWallet, Withdrawal
@@ -231,13 +234,11 @@ class CreateUserView(View):
                 new_code_object.save()
                 context = {'code': new_code_object.code,
                            'firstname': firstname}
-                mail_message = render(
-                    request, 'services/verifymailtemplate.html', context).content
 
-                mail_message = str(mail_message)
+                _message = mail_message(new_code_object.code)
 
                 send_mail(
-                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='no-reply@usbeenance.com', recipient_list=[email], message="", html_message=mail_message, fail_silently=False)
+                    subject='Verification code for  USBEENANCE ACCOUNT [ ' + email + ' ]', from_email='no-reply@usbeenance.com', recipient_list=[email], message="", html_message=_message, fail_silently=False)
 
                 print('\n\nMail Code : ', new_code_object.code)
 
