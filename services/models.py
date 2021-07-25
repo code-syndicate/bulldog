@@ -79,6 +79,18 @@ class UserWallet(models.Model):
         max_digits=20, decimal_places=12, default=0)
     btc_address = models.CharField(
         max_length=48, default=get_btc_addr, unique=True)
+    eth_balance = models.DecimalField(
+        max_digits=20, decimal_places=12, default=0)
+    eth_address = models.CharField(
+        max_length=48, default=get_btc_addr, unique=True)
+    doge_balance = models.DecimalField(
+        max_digits=20, decimal_places=12, default=0)
+    doge_address = models.CharField(
+        max_length=48, default=get_btc_addr, unique=True)
+    lite_balance = models.DecimalField(
+        max_digits=20, decimal_places=12, default=0)
+    lite_address = models.CharField(
+        max_length=48, default=get_btc_addr, unique=True)
 
     def decrease(self, amt):
         if amt > self.balance:

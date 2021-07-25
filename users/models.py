@@ -1,8 +1,9 @@
 import datetime
-from django.utils import timezone
 import uuid
-from django.db import models
+
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db import models
+from django.utils import timezone
 
 
 # custom User manager
@@ -59,6 +60,9 @@ class User(AbstractBaseUser):
 
 # User data
 class UserData(models.Model):
+    country = models.CharField(max_length=48, default='null', null=True)
+    state = models.CharField(max_length=48, default='null', null=True)
+    phone = models.CharField(max_length=15, default='null', null=True)
     picture = models.ImageField(null=True)
     dob = models.DateField(null=True)
 
