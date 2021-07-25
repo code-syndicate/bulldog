@@ -585,8 +585,8 @@ Dashboard | usbeenance
 
         </button>
     </div>
-    <!-- <div id='overlay'
-         class='hidden md:block fixed md:static z-20 top-0 left-0 right-0 bg-gray-700 bottom-0   lg:w-1/5
+    <div id='overlay'
+         class='hidden  fixed md:static z-20 top-0 left-0 right-0 bg-gray-700 bottom-0   lg:w-1/5
          md:w-2/5
          flex-grow
          flex-shrink-0
@@ -595,7 +595,7 @@ Dashboard | usbeenance
 
 
         <img alt='profile'
-             src='{% static 'services/bitcoin4.png' %}'
+             src='{% static 'services/profile.jpeg' %}'
              width='150'
              height='150'
              class='rounded-full ring-2 ring-gray-700 border-2 border-solid border-gray-600 shadow-xl min-h-8 mx-auto block my-4' />
@@ -619,13 +619,13 @@ Dashboard | usbeenance
                                 &dollar;{{request.user.wallet.balance_string}}</span>
 
                         </div>
-                        <div>
+                        <!-- <div>
                             <i class='bi-currency-bitcoin text-base text-yellow-700'></i> BTC :
                             &nbsp;&nbsp;
                             <span class='font-bold'>
                                 &#8383; {{request.user.wallet.btc_balance}}</span>
 
-                        </div>
+                        </div> -->
 
 
 
@@ -642,7 +642,7 @@ Dashboard | usbeenance
 
             </ul>
 
-            <p style='font-family: "Raleway";'
+            <!-- <p style='font-family: "Raleway";'
                class='text-sm font-normal bg-gray-900 my-1 text-center mx-auto py-2 pb-4 px-2 text-white '>
                 BTC
                 Address :
@@ -650,7 +650,7 @@ Dashboard | usbeenance
                       class='bg-gray-800 hover:bg-gray-700 hover:text-yellow-400 hover:font-bold shadow-xl rounded-xl px-2 py-1'>
                     {{request.user.wallet.btc_address}}
                 </span>
-            </p>
+            </p> -->
 
             <br>
             <br>
@@ -658,6 +658,10 @@ Dashboard | usbeenance
 
 
             <ul class='flex flex-col flex-nowrap justify-center content-end space-y-2  bg-gray-700'>
+                <li id='reportAbuse'
+                    class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
+                    <i class='bi-person-circle'></i> Profile
+                </li>
                 <li
                     class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
                     <a href='/dashboard/'><i class='bi bi-currency-bitcoin'></i> Deposit </a>
@@ -668,16 +672,12 @@ Dashboard | usbeenance
                 </li>
                 <li id='showVerifyForm'
                     class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <i class='bi bi-check2-circle'></i> Verify transfer
+                    <i class='bi bi-check2-circle'></i> Verify deposit
                 </li>
                 <li
                     class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
                     <a href='{% url "services:history_view" %}'><i class='bi bi-clock-history'></i>
                         Transaction history </a>
-                </li>
-                <li id='reportAbuse'
-                    class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <i class='bi bi-exclamation-circle'></i> Report an issue
                 </li>
 
             </ul>
@@ -687,7 +687,7 @@ Dashboard | usbeenance
             <br>
             <br>
             <i id='closeOverlay'
-               class='md:hidden  bi-x text-4xl text-center py-3 mx-auto block shadow-lg text-gray-700 bg-gray-300'></i>
+               class='  bi-x text-4xl text-center py-3 mx-auto block shadow-lg text-gray-700 bg-gray-300'></i>
 
 
         </div>
@@ -696,7 +696,7 @@ Dashboard | usbeenance
 
 
 
-    </div> -->
+    </div>
 
 
     {% block content %}
