@@ -166,28 +166,42 @@ Dashboard | usbeenance
 
 <!-- Report Abuse  -->
 <div id='reportAbuseBox'
-     class=" coinBox  hidden bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
+     class=" coinBox min-h-screen  hidden bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
 
     <i onclick="this.parentElement.style.display = 'none'"
        class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
 
 
     <h4 style='font-family: "Work Sans";'
-        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Report an issue </h4>
-    <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-xl my-2'
+        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Profile </h4>
+    <img class='object-cover mx-auto block ring-1 ring-gray-600 rounded-full my-2'
          alt='bitcoin'
-         src='{% static "services/bitcoin2.jpg" %}'
-         width="300"
-         height="300">
+         src='{% static "services/profile.jpeg" %}'
+         width="150"
+         height="150">
 
-    <p style="font-family: Inter"
-       class='text-center p-2 text-lg font-bold '> Hey
-        {{request.user.firstname}}, please log all your complains to <a
-           href='mailto:support@usebeenance.com'
+    <br>
+
+
+    <p class='font-bold text-center text-gray-600  p-2 m-0 '> Firstname :
+        {{request.user.firstname}} </p>
+    <p class='font-bold text-center text-gray-600  p-2 m-0 '> Lastname :
+        {{request.user.lastname}} </p>
+    <p class='font-bold text-center text-gray-600  p-2 m-0 '> Email Address : {{request.user.email}}
+    </p>
+    <p class='font-bold text-center text-gray-600  p-2 m-0 '> Total balance (USD) :
+        &dollar;{{request.user.wallet.balance}}</p>
+
+    <p class='font-bold text-center text-gray-600  p-2 m-0 '> DOB :
+        &dollar;{{request.user.data.dob}}</p>
+
+    <i style="font-family: Inter"
+       class='text-center block p-2 text-sm font-light absolute bottom-0 mx-4 '> Please log all your
+        complains to <a href='mailto:support@usebeenance.com'
            class='underline text-yellow-600'> support@usbeenance.com</a>. We
         will
         get back to you in due course.
-    </p>
+    </i>
 
 
 </div>
@@ -791,12 +805,15 @@ Dashboard | usbeenance
         <!-- New chip in  -->
 
         <div
-             class=' w-11/12 rounded-xl mb-6 shadow mx-auto  p-3 flex flex-col md:flex-row flex-wrap content-center items-center  justify-evenly bg-gray-100'>
+             class='max-w-md md:max-w-full w-11/12  rounded-xl mb-6 shadow mx-auto  p-3 flex  flex-row flex-wrap content-center items-center  justify-evenly bg-gray-100'>
 
 
-            <a class='bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105  flex-initial flex-grow-0 flex-shrink-1  md:w-1/3 hover:bg-dark-400 '
-               href='/dashboard/'>
-                <img class='block mx-auto  rounded-full rounded-full'
+            <a id='reportAbuse'
+               class='scale-85 md:scale-100  bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105  flex-initial flex-grow-0 flex-shrink-1  md:w-1/3 hover:bg-dark-400 '>
+                <img class='
+               block
+               mx-auto
+               rounded-full'
                      src='/static/services/profile.jpeg'
                      alt='deposit'
                      width='200'
@@ -808,7 +825,7 @@ Dashboard | usbeenance
             </a>
 
 
-            <a class='bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-1 md:w-1/3  hover:bg-dark-400 '
+            <a class=' scale-85 md:scale-100    bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-1 md:w-1/3  hover:bg-dark-400 '
                href='/dashboard/'>
                 <img class='block mx-auto  rounded-full'
                      src='
@@ -823,7 +840,7 @@ Dashboard | usbeenance
             </a>
 
 
-            <a class='bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-1 md:w-1/3 hover:bg-dark-400 '
+            <a class=' scale-85 md:scale-100    bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-1 md:w-1/3 hover:bg-dark-400 '
                href='/dashboard/'>
                 <img class='block mx-auto  rounded-full'
                      src='
@@ -869,7 +886,7 @@ Dashboard | usbeenance
             </a>
 
 
-            <a class='bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-1 md:w-1/3 hover:bg-dark-400 '
+            <a class=' scale-85 md:scale-100    bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-1 md:w-1/3 hover:bg-dark-400 '
                href='/user/history/'>
                 <img class='block mx-auto  rounded-full'
                      src='
