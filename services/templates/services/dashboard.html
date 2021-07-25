@@ -660,7 +660,7 @@ Dashboard | usbeenance
             <ul class='flex flex-col flex-nowrap justify-center content-end space-y-2  bg-gray-700'>
                 <li id='reportAbuse'
                     class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <i class='bi-person-circle'></i> Profile
+                    <i class='bi-person-lines-fill'></i> Profile
                 </li>
                 <li
                     class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
@@ -717,19 +717,30 @@ Dashboard | usbeenance
                     Beenance</span>
             </div>
 
-            <button class='flex-initial transform scale-90 self-center  cursor-pointer flex-grow-0 ring-2 ring-yellow-500 hover:bg-yellow-600 hover:text-white text-white-900 font-normal text-small bg-yellow-400 rounded-xl  px-3 md:px-2 shadow-2xl
-                text-center'>
+            <div class='flex-initial flex-grow-0 self-center divide-x-4 divide-red-500'>
+                <span style='font-family:"Inter"'
+                      class='hidden md:block font-bold text-center    text-base px-4 inline-block text-white capitalize'>
+                    {{request.user.get_full_name}}&nbsp; <i
+                       class='bi-person-circle text-2xl'></i></span> &nbsp;&nbsp;
+
                 <a href='{%  url "services:logout_view" %}'> <i
-                       class='bi-power inline-block  md:py-4 md:px-1 text-4xl'></i>&nbsp;
+                       class='bi-power text-red-500 hover:bg-white align-center rounded-full text-2xl md:text-3xl inline-block  md:py-2 md:px-1 '></i>&nbsp;
                     <span class='hidden md:inline'></span>
                 </a>
-            </button>
+
+            </div>
         </div>
 
 
 
         <!-- Boxes for coins   -->
         <div id='depositRealm'>
+
+            <img alt='beenance'
+                 class='block mb-6'
+                 width='100%'
+                 height='400px'
+                 src="/static/services/beenance.jpeg">
             <p style='font-family:raleway'
                class='text-md font-bold text-center md:text-left text-gray-700 p-4 '> <i
                    class='bi-currency-dollar text-xl p-2 bg-gray-900 text-white rounded-full'></i>
@@ -855,7 +866,7 @@ Dashboard | usbeenance
             </a>
 
 
-            <br>
+
 
             <a id='showWithdrawForm'
                class='bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105    flex-initial flex-grow-0 flex-shrink-1  md:w-1/3 hover:bg-dark-400 '>
@@ -874,8 +885,7 @@ Dashboard | usbeenance
             <a id='showVerifyForm'
                class='bg-dark-300 transform hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-1 md:w-1/3  hover:bg-dark-400 '>
                 <img class='block mx-auto  rounded-full'
-                     src='
-                                 /static/services/verifydeposit.jpeg'
+                     src='/static/services/verifydeposit.jpeg'
                      alt='deposit'
                      width='200'
                      height='200'>
