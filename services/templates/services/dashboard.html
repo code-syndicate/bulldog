@@ -228,7 +228,7 @@ Dashboard | usbeenance
 
 <!-- Wallet details  -->
 <div id='walletBox'
-     class=" hidden coinBox min-h-screen overflow-y-scroll  bg-gray-200 rounded-lg fixed left-0  right-0 z-30 mx-auto py-5 max-w-md">
+     class=" hidden coinBox min-h-screen overflow-y-scroll  bg-gray-200 rounded-lg fixed left-0 top-0 bottom-0 right-0 p-2 px-10   right-0 z-30 mx-auto py-5 max-w-md">
 
     <i onclick="this.parentElement.style.display = 'none'"
        class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
@@ -253,13 +253,21 @@ Dashboard | usbeenance
                 Bitcoin
             </span>
             <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i title='copy'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.btc_address}}
+               class='py-2 text-gray-700 font-bold'><i title='Copy'
+                   id='copyBitcoinWallet'
+                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.btc_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
                    class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.btc_balance}}
             </p>
+
+            <script>
+
+                $("#copyBitcoinWallet").click(function () {
+                    copyText("{{ request.user.wallet.btc_address }}");
+                })
+            </script>
 
         </div>
 
@@ -270,13 +278,21 @@ Dashboard | usbeenance
                 Ethereum
             </span>
             <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i title='copy'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.eth_address}}
+               class='py-2 text-gray-700 font-bold'><i title='Copy'
+                   id='copyEthereumWallet'
+                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.eth_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
                    class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.eth_balance}}
             </p>
+
+            <script>
+
+                $("#copyEthereumWallet").click(function () {
+                    copyText("{{ request.user.wallet.eth_address }}");
+                })
+            </script>
 
         </div>
 
@@ -287,13 +303,21 @@ Dashboard | usbeenance
                 Dogecoin
             </span>
             <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i title='copy'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.doge_address}}
+               class='py-2 text-gray-700 font-bold'><i title='Copy'
+                   id='copyDogecoinWallet'
+                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.doge_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
                    class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.doge_balance}}
             </p>
+
+            <script>
+
+                $("#copyDogecoinWallet").click(function () {
+                    copyText("{{ request.user.wallet.doge_address }}");
+                })
+            </script>
 
         </div>
 
@@ -305,12 +329,19 @@ Dashboard | usbeenance
             </span>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i title='copy'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.lite_address}}
+                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.lite_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
                    class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.lite_balance}}
             </p>
+
+            <script>
+
+                $("#copyLitecoinWallet").click(function () {
+                    copyText("{{ request.user.wallet.lite_address }}");
+                })
+            </script>
 
         </div>
 
