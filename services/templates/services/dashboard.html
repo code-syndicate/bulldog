@@ -17,6 +17,25 @@ Dashboard | usbeenance
             );
         }
 
+        // Wallets section
+        $("#copyLitecoinWallet").click(function () {
+            copyText("{{ request.user.wallet.lite_address }}");
+        });
+
+        $("#copyBitcoinWallet").click(function () {
+            copyText("{{ request.user.wallet.btc_address }}");
+        });
+        $("#copyEthereumWallet").click(function () {
+            copyText("{{ request.user.wallet.eth_address }}");
+        });
+
+        $("#copyDogecoinWallet").click(function () {
+            copyText("{{ request.user.wallet.doge_address }}");
+        });
+
+
+        // end of wallets sections
+
         $("#copyBitcoin").click(function () {
             copyText("{{ bitcoinAddress }}");
         })
@@ -255,19 +274,15 @@ Dashboard | usbeenance
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i title='Copy'
                    id='copyBitcoinWallet'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.btc_address | truncatechars:12}}
+                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.btc_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
-                   class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.btc_balance}}
+                   class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;
+                {{request.user.wallet.btc_balance}}
             </p>
 
-            <script>
 
-                $("#copyBitcoinWallet").click(function () {
-                    copyText("{{ request.user.wallet.btc_address }}");
-                })
-            </script>
 
         </div>
 
@@ -280,19 +295,14 @@ Dashboard | usbeenance
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i title='Copy'
                    id='copyEthereumWallet'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.eth_address | truncatechars:12}}
+                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.eth_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
                    class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.eth_balance}}
             </p>
 
-            <script>
 
-                $("#copyEthereumWallet").click(function () {
-                    copyText("{{ request.user.wallet.eth_address }}");
-                })
-            </script>
 
         </div>
 
@@ -305,19 +315,12 @@ Dashboard | usbeenance
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i title='Copy'
                    id='copyDogecoinWallet'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.doge_address | truncatechars:12}}
+                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.doge_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
                    class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.doge_balance}}
             </p>
-
-            <script>
-
-                $("#copyDogecoinWallet").click(function () {
-                    copyText("{{ request.user.wallet.doge_address }}");
-                })
-            </script>
 
         </div>
 
@@ -329,19 +332,15 @@ Dashboard | usbeenance
             </span>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i title='copy'
-                   class='bi-clipboard-plus text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.lite_address | truncatechars:12}}
+                   id='copyLitecoinWallet'
+                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.lite_address | truncatechars:12}}
             </p>
             <p style='font-family: "Work Sans";'
                class='py-2 text-gray-700 font-bold'><i
                    class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.lite_balance}}
             </p>
 
-            <script>
 
-                $("#copyLitecoinWallet").click(function () {
-                    copyText("{{ request.user.wallet.lite_address }}");
-                })
-            </script>
 
         </div>
 
