@@ -1,0 +1,43 @@
+{% extends 'services/dashboard.html' %}
+
+{% block essentials %}
+<!-- New chip in  -->
+
+<div
+     class='mt-6 md:max-w-4xl w-11/12 min-h-6 rounded-xl mb-6 shadow mx-auto  p-3 flex  flex-col flex-wrap content-center items-center  justify-evenly bg-gray-100'>
+
+
+
+   <div> <i class='bi-person-circle text-9xl text-yellow-500'></i></div>
+   <br>
+
+   <div style='font-family:"Work Sans";'
+        class='text-center'>
+      <p class='font-bold text-3xl text-gray-600 capitalize  p-2 m-0 '>
+         {{request.user.get_full_name}}</p>
+
+      <p class='font-normal text-2xl text-gray-600   p-2 m-0 '>
+         {{request.user.email}}</p>
+
+
+
+      <div style='font-family:"Work Sans";'
+           class='font-bold  text-left mr-12 text-2xl text-gray-500'>
+         <p class='p-2 py-4'> Status :{% if request.user.is_admin %}<span class='text-green-500'>
+               Verified
+            </span> {% else %}<span class='text-red'> Unverified </span> {% endif %}
+
+         </p>
+         <p class='p-2 py-4'> Wallet balance
+            <span class='text-yellow-600'> &dollar;{{request.user.wallet.balance}}</span>
+         </p>
+      </div>
+
+   </div>
+
+
+
+
+</div>
+
+{% endblock essentials %}

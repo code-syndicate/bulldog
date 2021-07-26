@@ -1,0 +1,25 @@
+{% extends 'services/dashboard.html' %}
+
+{% block essentials %}
+
+<div class='my-6'>
+   <p class='text-3xl capitalize p-4 text-center font-bold text-gray-700'> Total Value
+   </p>
+   <b
+      class='text-5xl block font-bold p-2 text-center text-gray-900'>&dollar;{{request.user.wallet.balance}}</b>
+
+   <div class='flex flex-row justify-between content-center '>
+      <button style='font-family:"Inter"'
+              class='flex-initial w-1/4 p-2 py-4 flex-grow-0 flex-shrink-1 text-gray-700 bg-yellow-500 '>
+         Deposit
+      </button>
+      <button style='font-family:"Inter"'
+              class='flex-initial w-1/4 p-2 py-4 flex-grow-0 flex-shrink-1 text-gray-700 bg-yellow-500 '>
+         Withdraw
+      </button>
+
+   </div>
+</div>
+
+
+{% endblock essentials %}

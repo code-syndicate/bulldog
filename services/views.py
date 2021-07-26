@@ -35,6 +35,16 @@ class IndexView(View):
         return render(request, 'services/index.html', context)
 
 
+class ProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'services/profile.html')
+
+
+class WalletView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'services/wallet.html')
+
+
 class FAQView(View):
     def get(self, request):
         context = {}
