@@ -47,7 +47,7 @@
                   class='flex-initial select-none self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
                <i title='Copy address'
                   id='copyBitcoinWallet'
-                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>&nbsp;&nbsp;
                {{request.user.wallet.btc_address | truncatechars:20}} </span>
             <span class='font-bold self-center  text-2xl text-gray-800'>
                {{request.user.wallet.btc_balance}}</span>
@@ -70,7 +70,7 @@
                   class='flex-initial select-none self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
                <i title='Copy address'
                   id='copyEthereumWallet'
-                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>&nbsp;&nbsp;
                {{request.user.wallet.eth_address | truncatechars:20}} </span>
             <span class='font-bold self-center  text-2xl text-gray-800'>
                {{request.user.wallet.eth_balance}}</span>
@@ -95,7 +95,7 @@
                   class='flex-initial select-none self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
                <i title='Copy address'
                   id='copyDogecoinWallet'
-                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>&nbsp;&nbsp;
                {{request.user.wallet.doge_address | truncatechars:20}} </span>
             <span class='font-bold self-center  text-2xl text-gray-800'>
                {{request.user.wallet.doge_balance}}</span>
@@ -118,6 +118,7 @@
                <i title='Copy address'
                   id='copyLitecoinWallet'
                   class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+               &nbsp;&nbsp;
                {{request.user.wallet.lite_address | truncatechars:20}} </span>
             <span class='font-bold self-center  text-2xl text-gray-800'>
                {{request.user.wallet.lite_balance}}</span>
