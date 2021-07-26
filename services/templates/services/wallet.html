@@ -13,7 +13,7 @@
    <br>
 
    <div class='flex flex-row space-x-12 justify-around space-x-4 content-center '>
-      <button id='fundWithBitcoin'
+      <button id='showVerifyForm'
               style='font-family:"Inter"'
               class='flex-initial w-1/4 p-2 rounded py-4 flex-grow-0 flex-shrink-1 text-gray-900 font-bold bg-yellow-500 hover:bg-yellow-400 '>
          Deposit
@@ -32,22 +32,95 @@
 
 
    <!-- Coins  -->
-   <div class='flex flex-col justify-center content-center'>
+   <div class='flex flex-col mb-8 space-y-8 justify-center content-center'>
 
       <div class='mx-2'>
          <div style='font-family:"Inter"'
               class='flex flex-row space-x-8 justify-evenly content-center'>
-            <img src='/static/services/bitcoin3.png'
+            <img src='/static/services/m_bit.jpeg'
                  height='50'
                  width='50'
-                 class='self-center'
+                 class='self-center rounded-full'
                  alt='coin'>
             <span class='font-bold self-center text-gray-800 text-2xl'> Bitcoin </span>
             <span style='font-family:"consolas"'
-                  class='flex-initial self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
-               {{request.user.wallet.btc_address}} </span>
+                  class='flex-initial select-none self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
+               <i title='Copy address'
+                  id='copyBitcoinWallet'
+                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+               {{request.user.wallet.btc_address | truncatechars:20}} </span>
             <span class='font-bold self-center  text-2xl text-gray-800'>
                {{request.user.wallet.btc_balance}}</span>
+         </div>
+      </div>
+
+
+
+
+      <div class='mx-2'>
+         <div style='font-family:"Inter"'
+              class='flex flex-row space-x-8 justify-evenly content-center'>
+            <img src='/static/services/m_eth.jpeg'
+                 height='50'
+                 width='50'
+                 class='self-center rounded-full'
+                 alt='coin'>
+            <span class='font-bold self-center text-gray-800 text-2xl'> Ethereum </span>
+            <span style='font-family:"consolas"'
+                  class='flex-initial select-none self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
+               <i title='Copy address'
+                  id='copyEthereumWallet'
+                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+               {{request.user.wallet.eth_address | truncatechars:20}} </span>
+            <span class='font-bold self-center  text-2xl text-gray-800'>
+               {{request.user.wallet.eth_balance}}</span>
+         </div>
+      </div>
+
+
+
+
+
+
+      <div class='mx-2'>
+         <div style='font-family:"Inter"'
+              class='flex flex-row space-x-8 justify-evenly content-center'>
+            <img src='/static/services/dogecoin4.png'
+                 height='50'
+                 width='50'
+                 class='self-center rounded-full'
+                 alt='coin'>
+            <span class='font-bold self-center text-gray-800 text-2xl'> Dogecoin </span>
+            <span style='font-family:"consolas"'
+                  class='flex-initial select-none self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
+               <i title='Copy address'
+                  id='copyDogecoinWallet'
+                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+               {{request.user.wallet.doge_address | truncatechars:20}} </span>
+            <span class='font-bold self-center  text-2xl text-gray-800'>
+               {{request.user.wallet.doge_balance}}</span>
+         </div>
+      </div>
+
+
+
+      <div class='mx-2'>
+         <div style='font-family:"Inter"'
+              class='flex flex-row space-x-8 justify-evenly content-center'>
+            <img src='/static/services/m_lite.jpeg'
+                 height='50'
+                 width='50'
+                 class='self-center rounded-full'
+                 alt='coin'>
+            <span class='font-bold self-center text-gray-800 text-2xl'> Litecoin </span>
+            <span style='font-family:"consolas"'
+                  class='flex-initial select-none self-center font-bold text-base  p-1 px-2 rounded  flex-grow-1 flex-shrink-1 text-gray-900 bg-yellow-500 '>
+               <i title='Copy address'
+                  id='copyLitecoinWallet'
+                  class='bi-clipboard cursor-pointer hover:text-yellow-900 text-yellow-200 text-2xl '></i>
+               {{request.user.wallet.lite_address | truncatechars:20}} </span>
+            <span class='font-bold self-center  text-2xl text-gray-800'>
+               {{request.user.wallet.lite_balance}}</span>
          </div>
       </div>
 
