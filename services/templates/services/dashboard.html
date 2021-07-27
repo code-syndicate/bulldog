@@ -100,6 +100,12 @@ Dashboard | usbeenance
             $('#reportAbuseBox').fadeIn();
         })
 
+        $("#showVerifyAccountBox").click(function () {
+            closeAllBoxes();
+            showMainOverlay();
+            $('#verifyAccountBox').fadeIn();
+        })
+
         $("#showWithdrawForm,#showWithdrawForm1,#showWithdrawForm2").click(function () {
             closeAllBoxes();
             showMainOverlay();
@@ -252,114 +258,6 @@ Dashboard | usbeenance
 
 
 <!-- Wallet details
-<div id='walletBox'
-     class=" hidden coinBox min-h-screen overflow-y-scroll  bg-gray-200 rounded-lg fixed left-0 top-0 bottom-0 right-0 p-2 px-10   right-0 z-30 mx-auto py-5 max-w-md">
-
-    <i onclick="this.parentElement.style.display = 'none'"
-       class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
-
-
-    <h4 style='font-family: "Work Sans";'
-        class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> Wallets </h4>
-    <img class='object-cover mx-auto block shadow-lg rounded-full my-2'
-         alt='bitcoin'
-         src='{% static "services/wallet.jpeg" %}'
-         width="75"
-         height="75">
-
-    <br>
-
-
-    <div class='text-center   flex flex-col  justify-center'>
-
-        <div class='shadow-2xl  rounded-xl mb-6 relative bg-100 pt-8 m-2 p-3 w-5/6 mx-auto'>
-            <span style='font-family:"Inter"'
-                  class='absolute top-0 bg-gray-700 text-white rounded-xl text-sm left-0 inline-block p-2  font-bold uppercase'>
-                Bitcoin
-            </span>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i title='Copy'
-                   id='copyBitcoinWallet'
-                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.btc_address | truncatechars:12}}
-            </p>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i
-                   class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;
-                {{request.user.wallet.btc_balance}}
-            </p>
-
-
-
-        </div>
-
-
-        <div class='shadow-2xl rounded-xl mb-6 relative bg-100 pt-8 m-2 p-3 w-5/6 mx-auto'>
-            <span style='font-family:"Inter"'
-                  class='absolute top-0 bg-gray-700 text-white rounded-xl text-sm left-0 inline-block p-2  font-bold uppercase'>
-                Ethereum
-            </span>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i title='Copy'
-                   id='copyEthereumWallet'
-                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.eth_address | truncatechars:12}}
-            </p>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i
-                   class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.eth_balance}}
-            </p>
-
-
-
-        </div>
-
-
-        <div class='shadow-2xl rounded-xl mb-6 relative bg-100 pt-8 m-2 p-3 w-5/6 mx-auto'>
-            <span style='font-family:"Inter"'
-                  class='absolute top-0 bg-gray-700 text-white rounded-xl text-sm left-0 inline-block p-2  font-bold uppercase'>
-                Dogecoin
-            </span>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i title='Copy'
-                   id='copyDogecoinWallet'
-                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.doge_address | truncatechars:12}}
-            </p>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i
-                   class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.doge_balance}}
-            </p>
-
-        </div>
-
-
-        <div class='shadow-2xl rounded-xl mb-6 relative bg-100 pt-8 m-2 p-3 w-5/6 mx-auto'>
-            <span style='font-family:"Inter"'
-                  class='absolute top-0 bg-gray-700 text-white rounded-xl text-sm left-0 inline-block p-2  font-bold uppercase'>
-                Litecoin
-            </span>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i title='copy'
-                   id='copyLitecoinWallet'
-                   class='bi-clipboard-plus cursor-pointer text-yellow-700 hover:text-yellow-500 text-2xl'></i>&nbsp;{{request.user.wallet.lite_address | truncatechars:12}}
-            </p>
-            <p style='font-family: "Work Sans";'
-               class='py-2 text-gray-700 font-bold'><i
-                   class='bi-cash-coin text-yellow-700 text-2xl'></i>&nbsp;{{request.user.wallet.lite_balance}}
-            </p>
-
-
-
-        </div>
-
-
-
-
-
-
-
-    </div>
-</div> -->
-
-
 
 
 
@@ -821,13 +719,19 @@ Dashboard | usbeenance
 
 
             <ul class='flex flex-col flex-nowrap justify-center content-end space-y-2  bg-gray-700'>
+
+                <a href='/'
+                   class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
+                    <i class='bi-house2'></i> Home
+                </a>
+
                 <a href='/user/profile/'
                    class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
                     <i class='bi-person-lines-fill'></i> Profile
                 </a>
                 <li
                     class='block flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
-                    <a href='/dashboard/'><i class='bi bi-currency-bitcoin'></i> Dashboard </a>
+                    <a href='/dashboard/'><i class='bi bi-dashboard'></i> Dashboard </a>
                 </li>
                 <li id='showWithdrawForm'
                     class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
@@ -842,6 +746,11 @@ Dashboard | usbeenance
                     <a href='{% url "services:history_view" %}'><i class='bi bi-clock-history'></i>
                         Transaction history </a>
                 </li>
+
+                <a href='/user/logout/'
+                   class='block cursor-pointer flex-initial flex-grow flex-shrink-0 text-xl  max-w-sm p-1 py-3 px-4 text-left text-white   hover:text-yellow-600 font-normal capitalize'>
+                    <i class='bi-x-octagon'></i> Log out
+                </a>
 
             </ul>
 
@@ -1218,15 +1127,17 @@ Dashboard | usbeenance
                             class='text-center text-base hover:underline text-white p-2 capitalize'>
                             <a href="">
                                 Legal</a>
-                        </li> -->
-                        <!-- <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href="">
-                                Privacy</a>
-                        </li> -->
+                        </li>  -->
+
                         <li style='font-family: raleway;'
                             class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
                             <a href="/faq/"> FAQ </a>
+                        </li>
+
+                        <li style='font-family: raleway;'
+                            class='text-center cursor-pointer text-base hover:underline text-white p-2 capitalize'>
+                            <a href="/user/logout/">
+                                Log out</a>
                         </li>
                     </ul>
                 </div>

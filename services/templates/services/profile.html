@@ -23,15 +23,91 @@
 
       <div style='font-family:"Work Sans";'
            class='font-bold  text-left mr-12 text-2xl text-gray-500'>
-         <p class='p-2 py-4'> Status :{% if request.user.is_admin %}<span class='text-green-500'>
+         <p class='p-2 py-4'> Status :{% if request.user.verified %}<span class='text-green-500'>
                Verified
-            </span> {% else %}<span class='text-red'> Unverified </span> {% endif %}
+            </span> {% else %}<span class='text-red-500'> Unverified </span> {% endif %}
 
          </p>
          <p class='p-2 py-4'> Wallet balance :
             <span class='text-yellow-600'> &dollar;{{request.user.wallet.balance}}</span>
          </p>
+         <br>
+         <br>
+
+         {% if  not request.user.verified %}
+         <button id='showVerifyAccountBox'
+                 class='block p-2 max-w-md text-white bg-green-600 rounded mx-auto text-center px-4 hover:bg-green-500 capitalize'>
+            Verify account </button>
+         {% endif %}
       </div>
+
+
+      <!-- start of pop up  -->
+
+
+      <div id='verifyAccountBox'
+           class=" hidden coinBox min-h-screen overflow-y-scroll  bg-gray-200 rounded-lg fixed left-0 top-0 bottom-0 right-0 p-2 px-10   right-0 z-30 mx-auto py-5 max-w-md">
+
+         <i onclick="this.parentElement.style.display = 'none'"
+            class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
+
+
+         <h4 style='font-family:"Work Sans";'
+             class='text-center p-2 text-sm  font-bold text-gray-700 uppercase'> VERIFY YOUR ACCOUNT
+         </h4>
+
+         <form class=''
+               method='post'
+               action=''>
+
+            {% csrf_token %}
+
+            <legend style='font-family:"Work Sans";'
+                    class='md:text-left text-center text-2xl md:text-white my-5 block text-gray-700 font-bold mb-12 capitalize select-none'>
+               <i class='bi-currency-dollar'></i>
+               Upload an ID card to verify your account
+            </legend>
+
+            <div class='m-2'>
+               <label style='font-family:"Work Sans";'
+                      class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block`'>
+                  Asset
+               </label>
+               <input type='image'
+                      name='ID'
+                      required
+                      class=''>
+
+            </div>
+
+
+
+            <div>
+               <p style="font-family:Raleway"
+                  class='toggleForms  text-gray-700 md:text-white pt-5 text-base text-center '>
+                  Your account will get verified after we your ID is authenticated
+               </p>
+               <br>
+
+            </div>
+
+            <button class='block  mx-auto w-full  hover:bg-green-700 mt-4  my-2 bg-green-700 rounded-lg ring-2 ring-green-900 text-2xl text-white  text-center py-3 px-5 outline-none'
+                    type='submit'>
+               Proceed </button>
+         </form>
+
+
+         <br>
+
+
+
+
+
+
+
+      </div>
+
+      <!-- end of pop up  -->
 
    </div>
 
