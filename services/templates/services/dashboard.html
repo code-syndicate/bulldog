@@ -100,7 +100,7 @@ Dashboard | usbeenance
             $('#reportAbuseBox').fadeIn();
         })
 
-        $("#showWithdrawForm,#showWithdrawForm1").click(function () {
+        $("#showWithdrawForm,#showWithdrawForm1,#showWithdrawForm2").click(function () {
             closeAllBoxes();
             showMainOverlay();
             $('#withdrawForm').fadeIn();
@@ -111,7 +111,7 @@ Dashboard | usbeenance
         })
 
 
-        $("#showVerifyForm,#showVerifyForm1").click(function () {
+        $("#showVerifyForm,#showVerifyForm1, #showVerifyForm2").click(function () {
             closeAllBoxes();
             showMainOverlay();
             $('#verifyForm').fadeIn();
@@ -123,7 +123,7 @@ Dashboard | usbeenance
         })
 
         // Coin Boxes Display handler
-        $('#showBitcoin').click(function () {
+        $('#showBitcoin, #showBitcoin1, #showBitcoin2').click(function () {
             closeAllBoxes();
             showMainOverlay();
 
@@ -1027,7 +1027,7 @@ Dashboard | usbeenance
 
 
                 <a class='transform cursor-pointer scale-85 md:scale-100    bg-dark-300  hover:bg-gray-200 my-4 hover:ring-2 hover:ring-yellow-500 hover:scale-105   flex-initial flex-grow-0 flex-shrink-0 w-full md:w-1/3 hover:bg-dark-400 '
-                   href='/dashboard/'>
+                   id='showBitcoin1'>
                     <img class='block mx-auto  rounded-full'
                          src='
                      /static/services/deposit.jpeg'
@@ -1174,30 +1174,30 @@ Dashboard | usbeenance
                 <div>
                     <ul class='flex-col flex justify-center content-center'>
                         <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href="">
+                            class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
+                            <a href="/">
                                 Home</a>
                         </li>
                         <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href=""> Fund
+                            class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
+                            <a id='showBitcoin2'> Fund
                                 wallet</a>
                         </li>
                         <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href="">
+                            class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
+                            <a id='showWithdrawForm2'>
                                 Withdraw</a>
                         </li>
                         <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href=""> Verify
+                            class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
+                            <a id='showVerifyForm2'> Verify
                                 transaction</a>
                         </li>
-                        <li style='font-family: raleway;'
+                        <!-- <li style='font-family: raleway;'
                             class='text-center text-base hover:underline text-white p-2 capitalize'>
                             <a href=""> Report
                                 an issue </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
@@ -1205,29 +1205,28 @@ Dashboard | usbeenance
                 <div>
                     <ul class='flex-col flex justify-center content-center'>
                         <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href="">
+                            class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
+                            <a href="/about-us/">
                                 About us</a>
                         </li>
                         <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href="">
+                            class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
+                            <a href="/contact-us/">
                                 Contact us</a>
                         </li>
-                        <li style='font-family: raleway;'
+                        <!-- <li style='font-family: raleway;'
                             class='text-center text-base hover:underline text-white p-2 capitalize'>
                             <a href="">
                                 Legal</a>
-                        </li>
-                        <li style='font-family: raleway;'
+                        </li> -->
+                        <!-- <li style='font-family: raleway;'
                             class='text-center text-base hover:underline text-white p-2 capitalize'>
                             <a href="">
                                 Privacy</a>
-                        </li>
+                        </li> -->
                         <li style='font-family: raleway;'
-                            class='text-center text-base hover:underline text-white p-2 capitalize'>
-                            <a href=""> Terms
-                                and conditions </a>
+                            class='text-center text-base cursor-pointer hover:underline text-white p-2 capitalize'>
+                            <a href="/faq/"> FAQ </a>
                         </li>
                     </ul>
                 </div>

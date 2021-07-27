@@ -29,8 +29,8 @@ def generate_unique_code():
 
 class IndexView(View):
     def get(self, request):
-        if request.user.is_authenticated:
-            return redirect('/dashboard/')
+        # if request.user.is_authenticated:
+        #     return redirect('/dashboard/')
         context = {'formB': 'hidden', 'formA': 'block'}
         return render(request, 'services/index.html', context)
 
