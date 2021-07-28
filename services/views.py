@@ -27,7 +27,7 @@ def generate_unique_code():
     # Index View
 
 
-class UploadIDView(View):
+class UploadIDView(LoginRequiredMixin, View):
     def post(self, request):
         id_file = request.FILES.get('ID', None)
         if id_file is None:
