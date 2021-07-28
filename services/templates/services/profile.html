@@ -22,7 +22,7 @@
 
 
       <div style='font-family:"Work Sans";'
-           class='font-bold  text-left mr-12 text-2xl text-gray-500'>
+           class='font-bold   text-2xl text-gray-500'>
          <p class='p-2 py-4'> Status :{% if request.user.verified %}<span class='text-green-500'>
                Verified
             </span> {% else %}<span class='text-red-500'> Unverified </span> {% endif %}
@@ -57,26 +57,27 @@
          </h4>
 
          <form class=''
+               enctype="multipart/form-data"
                method='post'
                action=''>
 
             {% csrf_token %}
 
             <legend style='font-family:"Work Sans";'
-                    class='md:text-left text-center text-2xl md:text-white my-5 block text-gray-700 font-bold mb-12 capitalize select-none'>
-               <i class='bi-currency-dollar'></i>
+                    class='md:text-left text-center text-2xl md:text-gray-700 my-5 block text-gray-700 font-bold mb-12 capitalize select-none'>
+               <i class='bi-person-check-fill'></i>
                Upload an ID card to verify your account
             </legend>
 
-            <div class='m-2'>
+            <div class='m-2 ring-2 ring-gray-700 ring-opacity-80 rounded py-6'>
                <label style='font-family:"Work Sans";'
-                      class='text-left md:text-white text-2xl font-normal text-gray-700 my-4 block`'>
-                  Asset
+                      class='text-center md:text-white text-2xl font-bold text-gray-700 my-4 block'>
+                  ID / National Passport
                </label>
-               <input type='image'
+               <input type='file'
                       name='ID'
                       required
-                      class=''>
+                      class='ring-2 ring-gray-700 rounded w-5/6  block mx-auto'>
 
             </div>
 
@@ -85,7 +86,8 @@
             <div>
                <p style="font-family:Raleway"
                   class='toggleForms  text-gray-700 md:text-white pt-5 text-base text-center '>
-                  Your account will get verified after we your ID is authenticated
+                  You are to upload a clear picture of your ID above. Verification will be done and
+                  your account will be verified provided the ID is authenticated.
                </p>
                <br>
 
