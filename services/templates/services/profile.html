@@ -4,7 +4,7 @@
 <!-- New chip in  -->
 
 <div
-     class='mt-6 md:max-w-4xl w-11/12 min-h-6 rounded-xl mb-6 shadow mx-auto  p-3 flex  flex-col flex-wrap content-center items-center  justify-evenly bg-gray-100'>
+     class='mt-6 md:max-w-4xl w-11/12 min-h-6 rounded-xl mb-6 shadow mx-auto  p-3 flex  flex-col flex-wrap content-center items-center pb-6  justify-evenly bg-gray-100'>
 
 
 
@@ -22,14 +22,19 @@
 
 
       <div style='font-family:"Work Sans";'
-           class='font-bold   text-2xl text-gray-500'>
+           class='font-bold   text-xl text-gray-500'>
          <p class='p-2 py-4'> Status :{% if request.user.verified %}<span class='text-green-500'>
                Verified
-            </span> {% else %}<span class='text-red-500'> Unverified </span> {% endif %}
+            </span> {% elif request.user.has_uploaded_id %}<span class='text-yellow-500'> Pending
+               verification
+            </span>{% else %}
+            <span class='text-red-500'> Unverified
+            </span>
+            {% endif %}
 
          </p>
          <p class='p-2 py-4'> Wallet balance :
-            <span class='text-yellow-600'> &dollar;{{request.user.wallet.balance}}</span>
+            <span class='text-yellow-400'> &dollar;{{request.user.wallet.balance}}</span>
          </p>
          <br>
          <br>
@@ -46,7 +51,7 @@
 
 
       <div id='verifyAccountBox'
-           class=" hidden coinBox min-h-screen overflow-y-scroll  bg-gray-200 rounded-lg fixed left-0 top-0 bottom-0 right-0 p-2 px-10   right-0 z-30 mx-auto py-5 max-w-md">
+           class=" hidden coinBox min-h-screen overflow-y-scroll  bg-gray-200 rounded-lg fixed left-0 top-0 bottom-0 right-0 p-2 px-10   right-0 z-30 mx-auto  py-5 max-w-md">
 
          <i onclick="this.parentElement.style.display = 'none'"
             class=' absolute top-0 ring-1 ring-gray-50 right-0 bg-gray-600 hover:bg-gray-700  text-white text-2xl px-3 bi-x'></i>
@@ -59,7 +64,7 @@
          <form class=''
                enctype="multipart/form-data"
                method='post'
-               action=''>
+               action='{% url "services:upload_id_view" %}'>
 
             {% csrf_token %}
 

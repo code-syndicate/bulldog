@@ -27,6 +27,21 @@ def generate_unique_code():
     # Index View
 
 
+class UploadIDView(View):
+    def post(self, request):
+        id_file = request.FILES.get('ID', None)
+        if id_file is None:
+            context = {
+                'message': "An error occured while uploading your ID.Please check and try again.", 'color': 'red'}
+            return render(request, 'services/profile.html', context)
+
+        request.user.has_uploaded_id = True
+        request.user.save()
+        context = {
+            'message': "Your ID has been successfully uploaded!", 'color': 'green'}
+        return render(request, 'services/dashboard.html', context)
+
+
 class IndexView(View):
     def get(self, request):
         # if request.user.is_authenticated:

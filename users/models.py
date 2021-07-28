@@ -32,6 +32,7 @@ class User(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
     verified = models.BooleanField(default=False)
+    has_uploaded_id = models.BooleanField(default=False, editable=False)
     data = models.OneToOneField(
         'UserData', related_name='user', on_delete=models.CASCADE, null=True)
     REQUIRED_FIELDS = ['firstname', 'lastname', 'password']
