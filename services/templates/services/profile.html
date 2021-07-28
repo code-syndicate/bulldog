@@ -39,7 +39,7 @@
          <br>
          <br>
 
-         {% if  not request.user.verified %}
+         {% if  not request.user.has_uploaded_id  %}
          <button id='showVerifyAccountBox'
                  class='block p-2 max-w-md text-white bg-green-600 rounded mx-auto text-center px-4 hover:bg-green-500 capitalize'>
             Verify account </button>
