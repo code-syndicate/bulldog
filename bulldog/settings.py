@@ -26,6 +26,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'usbeenance.herokuapp.com',
     'usbeenance.com',
+    'www.usbeenance.com',
+
     'localhost',
 ]
 
